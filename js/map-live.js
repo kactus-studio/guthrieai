@@ -36,7 +36,6 @@ const US_STATES_COORDINATES = {
   "WI": { name: "Wisconsin", top: "25%", left: "57%", variant: "pin-top-left" },
   "WY": { name: "Wyoming", top: "32%", left: "32%", variant: "pin-top-left" },
 
-  // Cluster do Nordeste posicionado com segurança no canto superior esquerdo da região
   "NE_CLUSTER": { 
     name: "Northeast Region", 
     top: "22%", 
@@ -46,20 +45,21 @@ const US_STATES_COORDINATES = {
   }
 };
 
+const northeastClusterStates = ["NY", "PA", "NJ", "CT", "MA", "MD", "ME", "NH", "VT", "DE"];
+
 function parseStateCode(locationString) {
   if (!locationString) return null;
   const clean = locationString.trim().toUpperCase();
   
-  const northeastClusterStates = ["NY", "PA", "NJ", "CT", "MA", "MD", "ME", "NH", "VT", "DE"];
   if (northeastClusterStates.includes(clean)) {
-    return "NE_CLUSTER";
+    return clean;
   }
 
   if (clean.length === 2 && US_STATES_COORDINATES[clean]) return clean;
   if (clean.includes(',')) {
     const parts = clean.split(',');
     const statePart = parts[parts.length - 1].trim();
-    if (northeastClusterStates.includes(statePart)) return "NE_CLUSTER";
+    if (northeastClusterStates.includes(statePart)) return statePart;
     if (statePart.length === 2 && US_STATES_COORDINATES[statePart]) return statePart;
   }
   for (const [code, info] of Object.entries(US_STATES_COORDINATES)) {
@@ -81,6 +81,7 @@ async function renderLiveMapProjects() {
 
     const stateTotals = {};
     let grandTotalProjects = 0;
+    const clusterBreakdown = {};
 
     projectsData.forEach(item => {
       const stateCode = parseStateCode(item.location);
@@ -89,9 +90,15 @@ async function renderLiveMapProjects() {
       grandTotalProjects += count;
 
       if (stateCode) {
-        stateTotals[stateCode] = (stateTotals[stateCode] || 0) + count;
+        if (northeastClusterStates.includes(stateCode)) {
+          clusterBreakdown[stateCode] = (clusterBreakdown[stateCode] || 0) + count;
+        } else {
+          stateTotals[stateCode] = (stateTotals[stateCode] || 0) + count;
+        }
       }
     });
+
+    const clusterTotalCount = Object.values(clusterBreakdown).reduce((a, b) => a + b, 0);
 
     function formatProjectTotal(num) {
       if (num >= 1000) {
@@ -110,7 +117,6 @@ async function renderLiveMapProjects() {
       const count = stateTotals[stateCode];
 
       if (config && count > 0) {
-        // Removida a exibição da sigla entre parênteses, mostrando apenas o nome do estado
         const spotHTML = `
           <div class="heat-pin-spot ${config.variant}" style="top: ${config.top}; left: ${config.left};">
              <div class="pulse-ring"></div>
@@ -125,6 +131,34 @@ async function renderLiveMapProjects() {
         container.insertAdjacentHTML('beforeend', spotHTML);
       }
     });
+
+    if (clusterTotalCount > 0) {
+      const clusterConfig = US_STATES_COORDINATES["NE_CLUSTER"];
+      
+      let breakdownHTML = '';
+      // Ordena por quantidade de projetos em ordem decrescente para ficar mais limpo
+      const sortedCluster = Object.entries(clusterBreakdown).sort((a, b) => b[1] - a[1]);
+      
+      sortedCluster.forEach(([stCode, stCount]) => {
+        breakdownHTML += `<div class="cluster-item"><span>${stCode}</span><strong>${stCount}</strong></div>`;
+      });
+
+      const clusterHTML = `
+        <div class="heat-pin-spot ${clusterConfig.variant}" style="top: ${clusterConfig.top}; left: ${clusterConfig.left};">
+           <div class="pulse-ring"></div>
+           <div class="pin-dot"></div>
+           <div class="connector-line"></div>
+           <div class="info-card cluster-hover-card">
+              <span class="location-name">${clusterConfig.name}</span>
+              <span class="project-count"><strong>${clusterTotalCount}</strong> PROJECTS</span>
+              <div class="cluster-dropdown">
+                 ${breakdownHTML}
+              </div>
+           </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', clusterHTML);
+    }
 
   } catch (error) {
     console.error('Erro ao carregar os projetos:', error);
