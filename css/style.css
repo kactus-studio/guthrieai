@@ -66,27 +66,239 @@
     opacity: 1;
 }
 
-/* Animação de Pulso de Opacidade (Heat Map) */
-@keyframes pulse-opacity {
-  0% {
-    opacity: 0.5; /* Opacidade inicial mais baixa */
-    transform: scale(0.95); /* Leve contração inicial */
+/* Container base do ponto no mapa */
+/* Container base do mapa ampliado para Desktop */
+.map-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 850px !important; /* Aumentado de 650px para 850px para dar mais destaque ao mapa */
+  margin: 0 auto;
+}
+
+/* Imagem base do mapa SVG adaptável */
+.map-wrapper img.map-fluid {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Ponto base no mapa proporcional */
+.heat-pin-spot {
+  position: absolute !important;
+  z-index: 10 !important;
+  width: 0 !important;
+  height: 0 !important;
+  transition: z-index 0.2s ease;
+}
+
+.heat-pin-spot:hover {
+  z-index: 9999 !important;
+}
+
+.pin-dot {
+  width: 12px !important; /* Aumentado para Desktop */
+  height: 12px !important;
+  background-color: #198754 !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 0 10px rgba(25, 135, 84, 0.9) !important;
+  z-index: 3 !important;
+}
+
+.pulse-ring {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 28px !important; /* Aumentado proporcionalmente */
+  height: 28px !important;
+  border: 2px solid #198754 !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  animation: pulse-heat 2s infinite ease-out !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+@keyframes pulse-heat {
+  0% { width: 12px; height: 12px; opacity: 1; }
+  100% { width: 48px; height: 48px; opacity: 0; }
+}
+
+/* Cartões maiores, mais nítidos e confortáveis para Desktop */
+.info-card {
+  position: absolute !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(25, 135, 84, 0.35) !important;
+  padding: 8px 14px !important; /* Mais espaçamento interno */
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22) !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 4 !important;
+}
+
+.location-name {
+  color: #1e293b !important;
+  font-size: 0.9rem !important; /* Fonte maior para legibilidade em Desktop */
+  font-weight: 700 !important;
+  margin-bottom: 2px !important;
+}
+
+.project-count {
+  color: #64748b !important;
+  font-size: 0.75rem !important; /* Fonte maior */
+  font-weight: 500 !important;
+  letter-spacing: 0.4px !important;
+}
+
+.project-count strong {
+  color: #198754 !important;
+  font-size: 1.05rem !important; /* Número de projetos em destaque maior */
+  font-weight: 800 !important;
+  margin-right: 3px !important;
+}
+
+/* Variantes conectoras dimensionadas para acompanhar o aumento dos cartões */
+.heat-pin-spot.pin-top-right .connector-line {
+  position: absolute !important; bottom: 0; left: 0; width: 24px; height: 22px;
+  border-left: 1.5px solid #198754; border-top: 1.5px solid #198754; border-top-left-radius: 6px; pointer-events: none; z-index: 2;
+}
+.heat-pin-spot.pin-top-right .info-card { bottom: 10px; left: 24px; }
+
+.heat-pin-spot.pin-top-left .connector-line {
+  position: absolute !important; bottom: 0; right: 0; width: 24px; height: 22px;
+  border-right: 1.5px solid #198754; border-top: 1.5px solid #198754; border-top-right-radius: 6px; pointer-events: none; z-index: 2;
+}
+.heat-pin-spot.pin-top-left .info-card { bottom: 10px; right: 24px; }
+
+.heat-pin-spot.pin-bottom-left .connector-line {
+  position: absolute !important; top: 0; right: 0; width: 24px; height: 22px;
+  border-right: 1.5px solid #198754; border-bottom: 1.5px solid #198754; border-bottom-right-radius: 6px; pointer-events: none; z-index: 2;
+}
+.heat-pin-spot.pin-bottom-left .info-card { top: 10px; right: 24px; }
+
+.heat-pin-spot.pin-bottom-right .connector-line {
+  position: absolute !important; top: 0; left: 0; width: 24px; height: 22px;
+  border-left: 1.5px solid #198754; border-bottom: 1.5px solid #198754; border-bottom-left-radius: 6px; pointer-events: none; z-index: 2;
+}
+.heat-pin-spot.pin-bottom-right .info-card { top: 10px; left: 24px; }
+
+/* ADAPTAÇÃO AUTOMÁTICA PARA ECRÃS MÓVEIS E TABLETS (Mantém responsivo sem quebrar) */
+/* ==========================================
+   OTIMIZAÇÃO ESPECÍFICA PARA MOBILE (< 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* O mapa expande-se para aproveitar toda a largura do telemóvel */
+  .map-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
-  50% {
-    opacity: 1; /* Opacidade máxima no meio do ciclo */
-    transform: scale(1.05); /* Leve expansão no meio do ciclo */
+
+  /* Reduz o tamanho do ponto central para se adaptar à escala do telemóvel */
+  .pin-dot {
+    width: 6px !important;
+    height: 6px !important;
+    box-shadow: 0 0 4px rgba(25, 135, 84, 0.9) !important;
   }
-  100% {
-    opacity: 0.5; /* Retorna à opacidade baixa */
-    transform: scale(0.95); /* Retorna à contração */
+
+  /* Animação pulsante proporcional para mobile */
+  .pulse-ring {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  @keyframes pulse-heat {
+    0% { width: 6px; height: 6px; opacity: 1; }
+    100% { width: 24px; height: 24px; opacity: 0; }
+  }
+
+  /* Cartões super compactos, legíveis e limpos em telemóveis */
+  .info-card {
+    padding: 3px 6px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .location-name {
+    font-size: 0.58rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0px !important;
+  }
+
+  .project-count {
+    font-size: 0.5rem !important;
+  }
+
+  .project-count strong {
+    font-size: 0.68rem !important;
+    margin-right: 1px !important;
+  }
+
+  /* Linhas conectoras mais curtas e precisas para mobile para evitar que saiam do ecrã */
+  .heat-pin-spot.pin-top-right .connector-line {
+    width: 12px !important; 
+    height: 10px !important;
+    border-top-left-radius: 3px;
+  }
+  .heat-pin-spot.pin-top-right .info-card { 
+    bottom: 5px !important; 
+    left: 12px !important; 
+  }
+
+  .heat-pin-spot.pin-top-left .connector-line {
+    width: 12px !important; 
+    height: 10px !important;
+    border-top-right-radius: 3px;
+  }
+  .heat-pin-spot.pin-top-left .info-card { 
+    bottom: 5px !important; 
+    right: 12px !important; 
+  }
+
+  .heat-pin-spot.pin-bottom-left .connector-line {
+    width: 12px !important; 
+    height: 10px !important;
+    border-bottom-right-radius: 3px;
+  }
+  .heat-pin-spot.pin-bottom-left .info-card { 
+    top: 5px !important; 
+    right: 12px !important; 
+  }
+
+  .heat-pin-spot.pin-bottom-right .connector-line {
+    width: 12px !important; 
+    height: 10px !important;
+    border-bottom-left-radius: 3px;
+  }
+  .heat-pin-spot.pin-bottom-right .info-card { 
+    top: 5px !important; 
+    left: 12px !important; 
   }
 }
 
-/* Ajuste para o efeito FOMO: áreas com maior densidade de projetos */
-.map-wrapper .heat-region.intensity-high {
-  /* A animação pode ser mais rápida ou ter uma opacidade base maior */
-  animation: pulse-opacity 3s infinite ease-in-out; 
-  /* Opcionalmente, você pode usar uma cor mais forte ou diferente aqui */
+/* Estilo especial para alinhar a cascata limpa dos estados do leste na lateral */
+.heat-pin-spot.cascade-right .connector-line {
+  position: absolute !important; 
+  top: 50%; 
+  left: 0; 
+  width: 20px; 
+  height: 1px;
+  background-color: #198754; 
+  pointer-events: none; 
+  z-index: 2;
+}
+
+.heat-pin-spot.cascade-right .info-card {
+  position: absolute !important; 
+  top: 50%; 
+  left: 20px; 
+  transform: translateY(-50%);
 }
 
 /* Base para desktop */
