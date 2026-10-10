@@ -272,6 +272,15 @@
                         <p style="color: var(--tx2); margin: 20px 0;">
                            From coastal infrastructure to inland commercial development, Guthrie AI is standardizing the bidding process for leading contractors nationwide. Our footprint is expanding rapidly as more firms realize the competitive advantage of AI-driven estimation.
                         </p>
+
+                        <!-- Bloco de FOMO integrado preservando a identidade visual -->
+                        <div class="fomo-live-ticker" style="background: rgba(25, 135, 84, 0.06); border: 1px solid rgba(25, 135, 84, 0.2); border-radius: 6px; padding: 10px 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                           <div style="width: 8px; height: 8px; background-color: #198754; border-radius: 50%; box-shadow: 0 0 6px #198754; animation: fomo-pulse 1.5s infinite; flex-shrink: 0;"></div>
+                           <div style="font-size: 0.8rem; color: var(--tx2);">
+                              <span id="fomo-dynamic-text" style="color: #ffffff; font-weight: 500;">A carregar atualizações ao vivo...</span>
+                           </div>
+                        </div>
+
                         <div class="d-flex align-items-center mt-4">
                            <div class="me-4 text-center">
                               <h4 id="total-projects-counter" class="mb-0" style="color: #198754; font-weight: 800;">4.2k+</h4>
@@ -2167,6 +2176,38 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
+
+  // Sistema de FOMO Rotativo Dinâmico
+const fomoMessages = [
+  "🔥 <strong style='color:#198754'>High Demand:</strong> 14 new contractors started onboarding in the last 24 hours.",
+  "⚡ <strong style='color:#198754'>Trend:</strong> Project volume generated in Texas grew 32% this month.",
+  "⚠️ <strong style='color:#198754'>Attention:</strong> Automated onboarding for new construction firms closes batch soon.",
+  "🚀 <strong style='color:#198754'>Live:</strong> A major New York contractor just automated their estimations."
+];
+
+function initFomoTicker() {
+  const fomoEl = document.getElementById('fomo-dynamic-text');
+  if (!fomoEl) return;
+
+  let index = 0;
+  // Define a primeira mensagem logo de imediato
+  fomoEl.innerHTML = fomoMessages[0];
+
+  // Alterna a mensagem a cada 6 segundos criando um gatilho dinâmico de urgência
+  setInterval(() => {
+    index = (index + 1) % fomoMessages.length;
+    fomoEl.style.opacity = 0;
+    setTimeout(() => {
+      fomoEl.innerHTML = fomoMessages[index];
+      fomoEl.style.opacity = 1;
+    }, 300);
+  }, 6000);
+}
+
+// Chame esta função dentro do seu DOMContentLoaded ou logo após carregar o mapa
+document.addEventListener('DOMContentLoaded', () => {
+  initFomoTicker();
+});
 
   /* ===== Alternância de Telas Integradas (Inline) ===== */
   function showInputs() {
