@@ -101,8 +101,10 @@
   pointer-events: none;
   z-index: 3;
   overflow: visible;
-  /* Mantém a esquerda em -1.6% e aumenta o deslocamento para cima para -1.8% */
   transform: translate(-1.6%, -1.8%);
+  /* Força aceleração por hardware no telemóvel */
+  transform: translate3d(-1.6%, -1.8%, 0);
+  will-change: transform;
 }
 
 .tracer-base-line {
@@ -135,6 +137,21 @@
   100% {
     stroke-dashoffset: 0;
     opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .tracer-bullet-beam {
+    filter: none !important; /* Desativa sombras pesadas no mobile para evitar travamentos */
+    stroke-width: 0.5;       /* Deixa a linha um pouco mais espessa para compensar a ausência de sombra */
+  }
+  
+  .night-city-dot {
+    box-shadow: 0 0 6px #4ade80 !important; /* Reduz o peso das sombras dos pontos */
+  }
+
+  .city-hover-card {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8) !important;
   }
 }
 
