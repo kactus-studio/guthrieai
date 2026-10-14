@@ -96,37 +96,38 @@ const US_EXACT_MAP_COORDS = {
   "BUFFALO": { top: 30.5, left: 82.5 },
   "CHARLESTON (WV)": { top: 47.0, left: 77.0 },
 
-  // Alasca e Havai
+// Cidades Principais / Exceções
   "JUNEAU": { top: 85.0, left: 23.0 },
   "ANCHORAGE": { top: 80.0, left: 17.5 },
-  "HONOLULU": { top: 81.0, left: 38.0 },
+  "HONOLULU": { top: 86.0, left: 36.0 }, // Posicionamento exato no arquipélago
+  "HI": { top: 86.0, left: 36.0 },       // Mantido idêntico ao Honolulu
 
-  // Siglas de Estados
+  // Siglas de Estados (Removida a duplicada do HI)
   "AL": { top: 63.0, left: 68.0 }, "AK": { top: 80.0, left: 17.5 },
   "AZ": { top: 60.5, left: 29.5 }, "AR": { top: 59.0, left: 61.0 },
   "CA": { top: 45.0, left: 12.0 }, "CO": { top: 45.0, left: 43.5 },
   "CT": { top: 31.0, left: 88.0 }, "DE": { top: 41.5, left: 85.0 },
   "FL": { top: 71.0, left: 78.5 }, "GA": { top: 58.0, left: 73.0 },
-  "HI": { top: 81.0, left: 38.0 }, "ID": { top: 29.0, left: 27.0 },
-  "IL": { top: 40.0, left: 66.0 }, "IN": { top: 43.5, left: 69.0 },
-  "IA": { top: 39.0, left: 57.5 }, "KS": { top: 47.5, left: 54.5 },
-  "KY": { top: 49.0, left: 68.0 }, "LA": { top: 71.0, left: 62.5 },
-  "ME": { top: 20.0, left: 90.0 }, "MD": { top: 40.5, left: 83.5 },
-  "MA": { top: 26.0, left: 90.5 }, "MI": { top: 35.0, left: 71.0 },
-  "MN": { top: 30.0, left: 57.5 }, "MS": { top: 63.0, left: 63.0 },
-  "MO": { top: 50.0, left: 61.0 }, "MT": { top: 23.5, left: 33.0 },
-  "NE": { top: 40.0, left: 53.5 }, "NV": { top: 50.0, left: 24.5 },
-  "NH": { top: 25.0, left: 89.0 }, "NJ": { top: 36.0, left: 86.0 },
-  "NM": { top: 56.0, left: 38.5 }, "NY": { top: 34.0, left: 87.0 },
-  "NC": { top: 51.0, left: 80.0 }, "ND": { top: 24.0, left: 49.5 },
-  "OH": { top: 42.5, left: 74.5 }, "OK": { top: 55.0, left: 53.0 },
-  "OR": { top: 24.0, left: 15.0 }, "PA": { top: 38.0, left: 85.0 },
-  "RI": { top: 29.0, left: 89.5 }, "SC": { top: 58.5, left: 77.0 },
-  "SD": { top: 31.0, left: 48.5 }, "TN": { top: 53.5, left: 68.5 },
-  "TX": { top: 73.5, left: 58.5 }, "UT": { top: 40.0, left: 32.0 },
-  "VT": { top: 23.0, left: 87.5 }, "VA": { top: 46.0, left: 82.0 },
-  "WA": { top: 18.0, left: 16.0 }, "WV": { top: 47.0, left: 77.0 },
-  "WI": { top: 35.5, left: 65.5 }, "WY": { top: 37.0, left: 42.5 }
+  "ID": { top: 29.0, left: 27.0 }, "IL": { top: 40.0, left: 66.0 }, 
+  "IN": { top: 43.5, left: 69.0 }, "IA": { top: 39.0, left: 57.5 }, 
+  "KS": { top: 47.5, left: 54.5 }, "KY": { top: 49.0, left: 68.0 }, 
+  "LA": { top: 71.0, left: 62.5 }, "ME": { top: 20.0, left: 90.0 }, 
+  "MD": { top: 40.5, left: 83.5 }, "MA": { top: 26.0, left: 90.5 }, 
+  "MI": { top: 35.0, left: 71.0 }, "MN": { top: 30.0, left: 57.5 }, 
+  "MS": { top: 63.0, left: 63.0 }, "MO": { top: 50.0, left: 61.0 }, 
+  "MT": { top: 23.5, left: 33.0 }, "NE": { top: 40.0, left: 53.5 }, 
+  "NV": { top: 50.0, left: 24.5 }, "NH": { top: 25.0, left: 89.0 }, 
+  "NJ": { top: 36.0, left: 86.0 }, "NM": { top: 56.0, left: 38.5 }, 
+  "NY": { top: 34.0, left: 87.0 }, "NC": { top: 51.0, left: 80.0 }, 
+  "ND": { top: 24.0, left: 49.5 }, "OH": { top: 42.5, left: 74.5 }, 
+  "OK": { top: 55.0, left: 53.0 }, "OR": { top: 24.0, left: 15.0 }, 
+  "PA": { top: 38.0, left: 85.0 }, "RI": { top: 29.0, left: 89.5 }, 
+  "SC": { top: 58.5, left: 77.0 }, "SD": { top: 31.0, left: 48.5 }, 
+  "TN": { top: 53.5, left: 68.5 }, "TX": { top: 73.5, left: 58.5 }, 
+  "UT": { top: 40.0, left: 32.0 }, "VT": { top: 23.0, left: 87.5 }, 
+  "VA": { top: 46.0, left: 82.0 }, "WA": { top: 18.0, left: 16.0 }, 
+  "WV": { top: 47.0, left: 77.0 }, "WI": { top: 35.5, left: 65.5 }, 
+  "WY": { top: 37.0, left: 42.5 }
 };
 
 function getPreciseCoordinates(locationString) {
