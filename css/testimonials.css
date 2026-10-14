@@ -1,0 +1,722 @@
+/* ============================================================
+   APLICAÇÃO DA FONTE MANROPE EM TODO O SITE E CABEÇALHO
+   ============================================================ */
+*,
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5,
+p, span, a, button, input, select, textarea,
+.nav-link,
+#nbar,
+#mbmenu,
+.bluebeam-hero,
+.bb-card,
+.city-hover-card,
+.info-card {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* ============================================================
+   VARIÁVEIS DE TEMA INTEGRADAS
+   ============================================================ */
+:root {
+  --bg: #000;
+  --bg2: #0d1a15;
+  --bg3: #0b1613;
+  --sf: #162a22;
+  --bd: rgba(255, 255, 255, 0.07);
+  --bd2: rgba(255, 255, 255, 0.13);
+  --tx: #f4f4f4;
+  --tx2: #096838;
+  --tx3: #096838;
+  --pur: #096838;
+  --blu: #096838;
+  --grad: linear-gradient(135deg, #0e8f4e, #096838);
+  --nav: 80px;
+  --dsb: 240px;
+}
+
+.lm {
+  --bg: #f4f4f4;
+  --bg2: #d9e7e2;
+  --bg3: #e9f3ef;
+  --sf: #fff;
+  --bd: rgba(71, 246, 109, 0.1);
+  --bd2: rgba(71, 246, 80, 0.2);
+  --tx: #096838;  /* Texto principal no modo claro */
+  --tx2: #096838;
+  --tx3: #0e8f4e;
+}
+
+/* Transição global do body */
+body {
+  background-color: var(--bg) !important;
+  color: var(--tx) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   ESTILOS BASE E UTILITÁRIOS
+   ============================================================ */
+.max-w-650 {
+  max-width: 650px;
+}
+
+.tracking-wider {
+  letter-spacing: 1.5px;
+}
+
+.micro-text {
+  font-size: 0.7rem;
+}
+
+/* Kicker / Subtítulo Geral */
+.bb-kicker,
+.bb-kicker.text-success {
+  color: #f4f4f4 !important;
+  transition: color 0.3s ease;
+}
+
+/* ============================================================
+   AJUSTES PARA MODO CLARO (.lm)
+   ============================================================ */
+body.lm h1, body.lm h2, body.lm h3, body.lm h4, body.lm h5, body.lm h6,
+body.lm .h1, body.lm .h2, body.lm .h3, body.lm .h4, body.lm .h5,
+body.lm .card-title,
+body.lm .display-3, body.lm .display-4, body.lm .display-5,
+body.lm .bluebeam-hero h1,
+body.lm .bluebeam-hero .display-3,
+body.lm .text-white,
+body.lm .location-name,
+body.lm footer h6,
+body.lm footer .text-white {
+  color: #096838 !important;
+}
+
+body.lm p,
+body.lm .text-secondary,
+body.lm .text-light,
+body.lm .bluebeam-hero p,
+body.lm footer .text-secondary,
+body.lm footer a.text-secondary {
+  color: #096838 !important;
+}
+
+body.lm .bb-kicker,
+body.lm .bb-kicker.text-success {
+  color: #096838 !important;
+}
+
+/* ============================================================
+   AUMENTO DA LOGO E DA FONTE DO CABEÇALHO
+   ============================================================ */
+
+/* 1. Tamanho da Logo e Ícone */
+.logo-i {
+  width: 40px !important;       /* Aumentado de 38px para 44px */
+  height: 40px !important;
+  font-size: 1.25rem !important; /* Ícone interno maior */
+  border-radius: 12px !important;
+}
+
+#nbar .logo-img,
+#nbar img {
+  height: 40px !important;      /* Se for imagem SVG/PNG */
+  width: auto !important;
+}
+
+/* Texto da Marca (GuthrieAI) */
+#nbar .fw-bold.fs-5,
+#nbar .logo-text {
+  font-size: 1rem !important; /* Aumentado o texto da logo */
+}
+
+/* 2. Fonte dos Links de Navegação */
+#nbar .nav-link {
+  font-size: 1rem !important;  /* Aumentado de 0.95rem para 1.05rem */
+  font-weight: 600 !important;    /* Mais encorpado */
+  padding: 10px 18px !important;  /* Aumentado o respiro interno */
+}
+
+/* 3. Botões do Cabeçalho (Log in, Book a demo, Theme toggle) */
+#nbar .btn-link,
+.btn-link {
+  white-space: nowrap !important; /* Impede o texto de quebrar linha (Log \n in) */
+  width: auto !important;         /* Garante que a largura se adapte ao texto */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px !important;   /* Dá o espaçamento interno correto ao botão */
+  font-size: 1rem !important;
+  line-height: 1 !important;
+}
+
+#nbar .btn-success {
+  white-space: nowrap !important;
+  padding: 10px 20px !important;
+  font-size: 1rem !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}   
+
+#nbar .boc,
+.boc {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;     /* Evita que o flexbox encolha o quadrado */
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 4. Ajustes no Menu Mobile Dropdown (#mbmenu) */
+#mbmenu .nav-link {
+  font-size: 1.1rem !important;
+  padding: 10px 0 !important;
+}
+
+/* ============================================================
+   CORREÇÃO DO BOTÃO DE TEMA E BOTÃO LOG IN
+   ============================================================ */
+
+/* 1. Botão do Alternador de Tema (.boc) */
+.boc {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0 !important;
+  flex-shrink: 0;
+}
+
+.boc .theme-icon {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: #ffffff !important;
+  transition: stroke 0.2s ease;
+}
+
+.boc:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #0f9e57 !important;
+}
+
+/* Modo Claro (.lm) no Botão do Tema */
+body.lm .boc {
+  border-color: rgba(9, 104, 56, 0.3) !important;
+  color: #096838 !important;
+}
+
+body.lm .boc .theme-icon {
+  stroke: #096838 !important;
+}
+
+body.lm .boc:hover {
+  background: rgba(9, 104, 56, 0.08) !important;
+}
+
+/* 2. Botão Customizado Log In (Com Borda Visível) */
+.btn-login-custom {
+  white-space: nowrap !important;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  padding: 8px 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.btn-login-custom:hover {
+  border-color: #0f9e57 !important;
+  color: #096838 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Modo Claro (.lm) no Botão Log in */
+body.lm .btn-login-custom {
+  border-color: rgba(9, 104, 56, 0.4) !important;
+  color: #096838 !important;
+}
+
+body.lm .btn-login-custom:hover {
+  background: rgba(9, 104, 56, 0.08) !important;
+  border-color: #096838 !important;
+}
+
+/* ============================================================
+   HERO SECTION - CORES COM HIERARQUIA VISUAL
+   ============================================================ */
+.bluebeam-hero,
+.hero-testimonials-section {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background-color: #000 !important;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.hero-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.95) 100%);
+  z-index: 1;
+}
+
+/* 1. MODO ESCURO (DARK MODE - PADRÃO) */
+
+/* Kicker / Badge superior */
+.bluebeam-hero .bb-kicker,
+.hero-testimonials-section .bb-kicker {
+  color: #096838 !important; /* Verde neon / destacado */
+  transition: color 0.3s ease;
+}
+
+/* Título Principal */
+.bluebeam-hero h1,
+.bluebeam-hero .display-3,
+.hero-testimonials-section h1 {
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+}
+
+/* Subtítulo / Parágrafo descritivo */
+.bluebeam-hero p,
+.hero-testimonials-section p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: color 0.3s ease;
+}
+
+
+/* 2. MODO CLARO (LIGHT MODE - .lm) */
+
+/* Kicker / Badge superior */
+body.lm .bluebeam-hero .bb-kicker,
+body.lm .hero-testimonials-section .bb-kicker {
+  color: #096838 !important;
+}
+
+/* Título Principal no modo claro */
+body.lm .bluebeam-hero h1,
+body.lm .bluebeam-hero .display-3,
+body.lm .hero-testimonials-section h1 {
+  color: #f4f4f4 !important;
+}
+
+/* Subtítulo / Parágrafo no modo claro */
+body.lm .bluebeam-hero p,
+body.lm .hero-testimonials-section p {
+  color: #f4f4f4 !important; /* Escuro legível */
+}
+
+/* ============================================================
+   FEATURED VIDEO & PLAY BUTTON
+   ============================================================ */
+.video-thumbnail-wrapper .play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  transition: background 0.3s ease;
+}
+
+.video-thumbnail-wrapper:hover .play-overlay {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.play-btn {
+  width: 68px;
+  height: 68px;
+  background-color: #096838;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  background-color: #096838;
+}
+
+.video-duration-tag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   CARROSSEL INFINITO DE LOGOS (MARQUEE)
+   ============================================================ */
+.logo-carousel-section {
+  background-color: #f4f4f4 !important;
+}
+
+.logo-carousel-section p {
+  color: #64748b !important;
+}
+
+.logo-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, #f4f4f4 10%, #f4f4f4 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #f4f4f4 10%, #f4f4f4 90%, transparent);
+}
+
+.logo-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.logo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  flex-shrink: 0;
+}
+
+.logo-item img {
+  height: 100px !important;
+  width: auto;
+  filter: grayscale(100%) opacity(0.7);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   SEÇÕES, CARDS E FILTROS
+   ============================================================ */
+#featured-story,
+#customer-grid-section {
+  background-color: var(--bg) !important;
+}
+
+.filter-bar-wrapper {
+  background-color: var(--bg2) !important;
+  border-color: var(--bd) !important;
+}
+
+.bb-card {
+  background-color: var(--bg2) !important;
+  border-color: var(--bd) !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bb-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blu) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.card-type-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.metric-highlight-box {
+  background-color: var(--bg3) !important;
+  border-color: var(--bd2) !important;
+}
+
+.metric-label {
+  color: #f4f4f4 !important;
+}
+
+body.lm .metric-label {
+  color: #096838 !important;
+}
+
+/* Form Selects & Inputs */
+.form-select,
+#search-input {
+  background-color: var(--bg3) !important;
+  color: var(--tx) !important;
+  border-color: var(--bd2) !important;
+}
+
+.form-select:focus,
+#search-input:focus {
+  border-color: var(--pur) !important;
+  box-shadow: 0 0 0 0.2rem rgba(14, 145, 79, 0.25) !important;
+}
+
+/* Modal Lightbox */
+.modal-content {
+  background-color: var(--bg2) !important;
+  border-color: var(--bd2) !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background-color: var(--bg2) !important;
+  border-top-color: var(--bd) !important;
+}
+
+footer h6,
+footer .text-white {
+  color: var(--tx) !important;
+}
+
+footer .text-secondary,
+footer a.text-secondary {
+  color: var(--tx2) !important;
+}
+
+footer a.text-secondary:hover {
+  color: #096838 !important;
+}
+
+/* ============================================================
+   FORÇAR TROCA DE COR DO CABEÇALHO COMPLETO (#nbar)
+   ============================================================ */
+
+/* 1. Modo Escuro (Dark Mode - Padrão) */
+#nbar .nav-link,
+#nbar .btn-link,
+#nbar .logo-text,
+#nbar .text-white,
+#nbar a {
+  color: #f4f4f4 !important;
+  transition: color 0.3s ease;
+}
+
+#nbar .nav-link:hover,
+#nbar .nav-link.active {
+  color: #096838 !important;
+}
+
+/* 2. Modo Claro (Light Mode - .lm) */
+body.lm #nbar .nav-link,
+body.lm #nbar .btn-link,
+body.lm #nbar .logo-text,
+body.lm #nbar .text-white,
+body.lm #nbar a,
+body.lm #nbar span:not([style*="color"]) {
+  color: #096838 !important;
+}
+
+body.lm #nbar .nav-link:hover,
+body.lm #nbar .nav-link.active {
+  color: #096838 !important;
+  background: rgba(9, 104, 56, 0.08) !important;
+}
+
+/* Ajuste do botão do menu hambúrguer no mobile para o modo claro */
+body.lm #nbar #mbmenu-btn,
+body.lm #nbar #mbmenu-btn i,
+body.lm #nbar .boc {
+  color: #096838 !important;
+  border-color: rgba(9, 104, 56, 0.2) !important;
+}
+
+/* Fixa o botão 'Book a demo' com cor constante em ambos os modos (Dark e Light) */
+#nbar .btn-success,
+body.lm #nbar .btn-success,
+.btn-success,
+body.lm .btn-success {
+  background-color: #096838 !important;
+  border-color: #096838 !important;
+  color: #f4f4f4 !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+#nbar .btn-success:hover,
+body.lm #nbar .btn-success:hover,
+.btn-success:hover,
+body.lm .btn-success:hover {
+  background-color: #096838 !important;
+  border-color: #0d8f4e !important;
+  color: #f4f4f4 !important;
+}
+
+/* Badge com cores estáticas constantes */
+.featured-badge-static,
+body.lm .featured-badge-static,
+body.lm span.featured-badge-static {
+  background-color: #096838 !important;
+  color: #f4f4f4 !important;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+/* Hero do Case Study Single */
+.case-hero {
+  background: linear-gradient(135deg, #050b07 0%, #0d1a15 100%);
+  border-bottom: 1px solid var(--bd);
+}
+
+body.lm .case-hero {
+  background: linear-gradient(135deg, #f4f4f4 0%, #d2e2dc 100%) !important;
+}
+
+body.lm .case-hero h1,
+body.lm .case-hero p,
+body.lm .case-hero span.fw-bold {
+  color: #096838 !important;
+}
+
+/* Quote Box */
+.quote-box {
+  background-color: var(--bg2) !important;
+  border-color: #0d8d4d !important;
+}
+
+body.lm .quote-box p {
+  color: #096838 !important;
+}
+
+/* Artigos do Case Study no Light Mode */
+body.lm .case-article-content h2,
+body.lm .case-article-content p,
+body.lm .case-article-content li {
+  color: #096838 !important;
+}
+
+/* ============================================================
+   SUPORTE AO MODO CLARO (.lm) NO CASE-STUDY-SINGLE.HTML
+   ============================================================ */
+
+/* Hero Header da Página Individual */
+body.lm .case-hero {
+  background: linear-gradient(135deg, #e9f3ef 0%, #d2e2dc 100%) !important;
+  border-bottom-color: var(--bd) !important;
+}
+
+body.lm .case-hero h1,
+body.lm .case-hero p,
+body.lm .case-hero span,
+body.lm .case-hero small {
+  color: #096838 !important;
+}
+
+/* Corpo do Artigo / Textos principais */
+body.lm .case-article-content h2,
+body.lm .case-article-content h3,
+body.lm .case-article-content p,
+body.lm .case-article-content ul,
+body.lm .case-article-content li {
+  color: #096838 !important;
+}
+
+/* Caixa de Depoimento / Citação */
+body.lm .quote-box {
+  background-color: var(--bg2) !important;
+  border-left-color: #096838 !important;
+}
+
+body.lm .quote-box p {
+  color: #096838 !important;
+}
+
+body.lm .quote-box div {
+  color: #096838 !important;
+}
+
+/* Sidebar Sticky (Key Project Impact Card) */
+body.lm .sticky-top .card {
+  background-color: var(--bg2) !important;
+  border-color: var(--bd) !important;
+}
+
+body.lm .sticky-top .card h4,
+body.lm .sticky-top .card .h2,
+body.lm .sticky-top .card span,
+body.lm .sticky-top .card small {
+  color: #096838 !important;
+}
+
+/* Cards das Caixas de Métricas do Artigo */
+body.lm .case-article-content .bg-dark {
+  background-color: var(--bg2) !important;
+  border-color: var(--bd) !important;
+}
+
+body.lm .case-article-content .bg-dark .fw-bold.text-white {
+  color: #096838 !important;
+}
+
+/* Garante que os ícones SVG do botão de tema obedeçam às regras de exibição */
+.boc .theme-icon {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: currentColor !important;
+}
+
+/* Força a visibilidade correta quando a classe .lm está ativa */
+body:not(.lm) #thbtn #mooni {
+  display: none !important;
+}
+
+body:not(.lm) #thbtn #suni {
+  display: block !important;
+}
+
+body.lm #thbtn #suni {
+  display: none !important;
+}
+
+body.lm #thbtn #mooni {
+  display: block !important;
+}
