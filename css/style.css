@@ -1,17 +1,17 @@
 :root {
-  --bg: #080f0c;
+  --bg: #000;
   --bg2: #0d1a15;
   --bg3: #0b1613;
   --sf: #162a22;
   --bd: rgba(255, 255, 255, 0.07);
   --bd2: rgba(255, 255, 255, 0.13);
-  --tx: #dae9e3;
-  --tx2: #a8c8ad;
-  --tx3: #244e40;
-  --pur: #72dda8;
+  --tx: #f4f4f4;
+  --tx2: #096838;
+  --tx3: #096838;
+  --pur: #0e914f;
   --blu: #3bf699;
-  --grad: linear-gradient(135deg, #0a914d, #0f7244);
-  --nav: 68px;
+  --grad: linear-gradient(135deg, #0e8f4e, #096838);
+  --nav: 80px;
   --dsb: 240px;
 }
 .lm {
@@ -74,17 +74,6 @@
 
 #fomo-dynamic-text {
   transition: opacity 0.3s ease-in-out;
-}
-
-.map-wrapper {
-  position: relative;
-  background: transparent !important;
-  overflow: visible !important;
-  aspect-ratio: 16 / 10;
-  max-width: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 0.4s ease-in;
 }
 
 .map-wrapper.map-rendered {
@@ -355,7 +344,7 @@
   right: 20px;
   width: 45px;
   height: 45px;
-  background-color: #ffffff; /* Fundo branco para combinar com o design dos cards */
+  background-color: #f4f4f4; /* Fundo cinza claro para combinar com o design dos cards */
   color: #333333;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%; /* Totalmente redondo */
@@ -376,7 +365,7 @@
 .btn-back-to-top:hover {
   transform: translateY(-5px); /* Sobe de leve ao passar o mouse */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  background-color: #f8f9fa;
+  background-color: #f4f4f4;
 }
 
 /* Classe que o JavaScript vai injetar quando o usuário rolar a tela */
@@ -390,7 +379,7 @@
 html.dark .btn-back-to-top,
 body.dark-mode .btn-back-to-top {
   background-color: #1e1e1e;
-  color: #ffffff;
+  color: #f4f4f4;
   border-color: rgba(255, 255, 255, 0.1);
 }
 [data-bs-theme="dark"] .btn-back-to-top:hover,
@@ -400,50 +389,59 @@ body.dark-mode .btn-back-to-top:hover {
 }
 
 /* =======================================================
-   CONTROLE DEFINITIVO VIA INVERSÃO DINÂMICA
+   CONTROLE DEFINITIVO VIA INVERSÃO DINÂMICA (EXPANDIDO)
    ======================================================= */
 
-/* PADRÃO GERAL (Para telas normais / Modo Claro) */
-.sp .stitle {
-  color: #146c43 !important; /* Cor escura para o Modo Claro */
-}
-.sp .stitle .gt {
-  color: #0f5132 !important; /* O 'Intelligent AI' fica Verde Escuro no modo claro */
-}
-.metric-number {
-  color: #0f5132 !important; 
-}
-.metric-label {
-  color: #146c43 !important; 
-}
-.sp .gc hr {
-  border-color: rgba(0, 0, 0, 0.1) !important;
+/* PADRÃO GERAL (Para telas normais / Modo Claro) - Abarca todos os títulos */
+.sp .stitle,
+body:not(.dark):not(.night) h1:not(.keep-white),
+body:not(.dark):not(.night) h2:not(.keep-white),
+body:not(.dark):not(.night) h3:not(.keep-white) {
+  color: #096838 !important; /* Cor escura/verde forte para o Modo Claro */
 }
 
-/* DETECÇÃO INTELIGENTE DE FUNDO ESCURO (MÁGICA)
-   Se o navegador detectar que o sistema do usuário ou o container ativo tem fundo escuro,
-   ou se o seu template usar a propriedade padrão de esquema escuro: */
+.sp .stitle .gt {
+  color: #096838 !important; 
+}
+
+.metric-number,
+.metric-label {
+  color: #096838 !important; 
+}
+
+.sp .gc hr {
+  border-color: #000 !important;
+}
+
+/* DETECÇÃO INTELIGENTE DE FUNDO ESCURO */
 @media (prefers-color-scheme: dark) {
-  .sp .stitle { color: #ffffff !important; }
-  .sp .stitle .gt { color: #198754 !important; }
-  .metric-number { color: #ffffff !important; }
-  .metric-label { color: #ffffff !important; opacity: 0.9; }
+  .sp .stitle,
+  h1, h2, h3 { 
+    color: #f4f4f4 !important; 
+  }
+  .sp .stitle .gt { 
+    color: #096838 !important; 
+  }
+  .metric-number { color: #f4f4f4 !important; }
+  .metric-label { color: #f4f4f4 !important; opacity: 0.9; }
   .sp .gc hr { border-color: rgba(255, 255, 255, 0.15) !important; }
 }
 
-/* ARMA SEGRETA: Se o seu template usa um botão que muda o fundo sem atualizar as classes acima,
-   forçamos a reversão caso o elemento pai entre em contraste escuro */
+/* FORÇAGEM PARA TEMAS ESCUROS ATIVOS NO SITE/BODY */
 @media screen and (min-color-index: 0), (-webkit-min-device-pixel-ratio: 0) {
-  /* Se o tema do site injetar um background preto/grafite no corpo da página */
   body[style*="background"] .sp .stitle,
   body[class*="dark"] .sp .stitle,
-  body[class*="night"] .sp .stitle {
-    color: #ffffff !important;
+  body[class*="night"] .sp .stitle,
+  body[style*="background"] h1, body[style*="background"] h2, body[style*="background"] h3,
+  body[class*="dark"] h1, body[class*="dark"] h2, body[class*="dark"] h3,
+  body[class*="night"] h1, body[class*="night"] h2, body[class*="night"] h3 {
+    color: #f4f4f4 !important;
   }
+  
   body[style*="background"] .sp .stitle .gt,
   body[class*="dark"] .sp .stitle .gt,
   body[class*="night"] .sp .stitle .gt {
-    color: #198754 !important;
+    color: #096838 !important;
   }
 }
 
@@ -472,6 +470,28 @@ html.lm .logo-auto-black,
 body.lm .logo-auto-black,
 [class*="lm"] .logo-auto-black {
     display: inline-block !important;
+}
+
+/* Cor padrão (Modo Escuro / Dark Theme) */
+.nav-links-group .nav-link {
+  color: var(--tx1) !important;
+  transition: color 0.3s ease;
+}
+
+.nav-links-group .nav-link:hover {
+  color: #096838 !important; /* Verde neon ao passar o mouse */
+}
+
+/* Cor alternada para Modo Claro (Light Mode) */
+/* Caso o seu projeto use a classe .light-mode ou data-theme="light" no body/html */
+body.light-mode .nav-links-group .nav-link,
+[data-theme="light"] .nav-links-group .nav-link {
+  color: #1e293b !important; /* Escuro no tema claro */
+}
+
+body.light-mode .nav-links-group .nav-link:hover,
+[data-theme="light"] .nav-links-group .nav-link:hover {
+  color: #096838 !important;
 }
 
    /* =======================================================
@@ -525,7 +545,7 @@ body.lm .logo-auto-black,
   padding: 20px;
 }
 .roi-modal-card {
-  background-color: var(--bs-body-bg, #ffffff);
+  background-color: var(--bs-body-bg, #f4f4f4);
   border: 1px solid var(--bs-border-color, #e0e0e0);
   border-radius: 20px;
   max-width: 550px;
@@ -541,7 +561,7 @@ body.lm .logo-auto-black,
   cursor: pointer;
 }
 .btn-roi-calculate:hover {
-  background-color: #146c43 !important;
+  background-color: #096838 !important;
 }
 
 /* MODO CLARO PADRÃO */
@@ -552,7 +572,7 @@ body.lm .logo-auto-black,
 .pricing .comparison-title,
 .pricing .comparison-value,
 .modal-headline {
-  color: #146c43 !important;
+  color: #096838 !important;
 }
 .style-output-box {
   background-color: #f8f9fa;
@@ -571,7 +591,7 @@ body.lm .logo-auto-black,
 [data-theme*="dark"] .pricing .pricing-subtitle,
 [data-bs-theme="dark"] .pricing .pricing-title,
 [data-bs-theme="dark"] .pricing .pricing-subtitle {
-  color: #ffffff !important;
+  color: #f4f4f4 !important;
 }
 
 [class*="dark"] .style-output-box,
@@ -587,7 +607,7 @@ html {
   overflow-x: hidden !important;
 }
 body {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Manrope", sans-serif;
   background: var(--bg);
   color: var(--tx);
   overflow-x: hidden;
@@ -612,7 +632,7 @@ a {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #198754;
+  color: #096838;
   margin-bottom: 14px;
 }
 .slbl::before {
@@ -672,8 +692,8 @@ a {
 .bgrd {
   background: var(--grad);
   border: none;
-  color: #fff;
-  font-family: "Space Grotesk", sans-serif;
+  color: #f4f4f4;
+  font-family: "Manrope", sans-serif;
   font-weight: 600;
   border-radius: 12px;
   transition: 0.25s;
@@ -682,13 +702,13 @@ a {
 .bgrd:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 24px rgba(92, 246, 195, 0.4);
-  color: #fff;
+  color: #f4f4f4;
 }
 .boc {
   background: transparent;
   border: 1px solid var(--tx2);
   color: var(--tx);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 500;
   border-radius: 12px;
   transition: 0.25s;
@@ -724,16 +744,17 @@ a {
   border-bottom: 1px solid var(--bd);
   display: flex;
   align-items: center;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, height 0.3s;
   max-width: 100% !important;
   box-sizing: border-box;
+  padding: 0 10px; /* Aumenta o respiro lateral interno */
 }
 #nbar .row {
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
 .lm #nbar {
-  background: rgba(250, 250, 254, 0.88);
+  background: #f4f4f4;
 }
 #nbar.scr {
   background: rgba(8, 15, 12, 0.96);
@@ -743,22 +764,44 @@ a {
   background: rgba(250, 254, 252, 0.97);
 }
 .logo-i {
-  width: 34px;
-  height: 34px;
+  width: 44px; /* Aumentado de 34px para 44px */
+  height: 44px;
   background: var(--grad);
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 1.15rem; /* Fonte levemente maior */
   flex-shrink: 0;
 }
+
+/* Aumenta a logo no desktop (telas a partir de 992px) */
+@media (min-width: 992px) {
+
+  /* Se a sua logo for a imagem da marca (ex: <img src="logo.svg" class="logo-img">) */
+  #nbar .logo-img,
+  #nbar img {
+    height: 38px !important; /* Ajuste a altura desejada (padrão costuma ser ~32px-36px) */
+    width: auto !important;  /* Mantém a proporção da imagem sem distorcer */
+    max-height: calc(var(--nav) - 20px); /* Garante que a logo não estoure a altura do navbar */
+  }
+
+  /* Se a sua logo utilizar a classe .logo-i do seu CSS (caixa do ícone) */
+  #nbar .logo-i {
+    width: 48px !important;  /* Aumentado de 34px para 48px */
+    height: 48px !important;
+    font-size: 1.25rem !important; /* Aumenta o tamanho do ícone interno */
+    border-radius: 12px;
+  }
+
+}
+
 .nav-link {
   color: var(--tx2) !important;
   font-weight: 500;
-  font-size: 0.9rem;
-  padding: 6px 14px !important;
+  font-size: 1rem; /* Aumentado de 0.9rem para 1rem */
+  padding: 10px 18px !important; /* Aumentado o padding vertical e horizontal */
   border-radius: 8px;
   transition: 0.2s !important;
 }
@@ -782,11 +825,24 @@ a {
   display: none;
 }
 .lm #mbmenu {
-  background: rgba(250, 254, 252, 0.98);
+  background: #f4f4f4;
 }
 #mbmenu.open {
   display: block;
 }
+
+@media (max-width: 991px) {
+  :root {
+    --nav: 80px; /* Ajuste opcional para mobile/tablet não ocupar espaço excessivo */
+  }
+  
+  .logo-i {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
+
 /* HERO */
 #hero {
   min-height: 100vh;
@@ -804,10 +860,10 @@ a {
   padding: 5px 14px 5px 8px;
   border-radius: 100px;
   background: rgba(92, 246, 182, 0.12);
-  border: 1px solid rgba(92, 246, 169, 0.3);
+  border: 1px solid #096838;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #8bfac2;
+  color: var(--tx1);
   margin-bottom: 22px;
 }
 .bdot {
@@ -890,7 +946,7 @@ a {
 .dsi.on,
 .dsi:hover {
   background: rgba(92, 246, 138, 0.14);
-  color: #8bfab0;
+  color: #109e57;
 }
 .stpill {
   background: var(--bg3);
@@ -932,7 +988,7 @@ a {
 }
 .cbus {
   background: var(--grad);
-  color: #fff;
+  color: #f4f4f4;
   align-self: flex-end;
 }
 .tdot {
@@ -998,7 +1054,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #f4f4f4;
   font-size: 1rem;
   margin-bottom: 16px;
 }
@@ -1010,7 +1066,7 @@ a {
   font-size: 0.7rem;
   font-weight: 600;
   background: rgba(92, 246, 143, 0.12);
-  color: #458558;
+  color: #096838;
   border: 1px solid rgba(92, 246, 151, 0.2);
 }
 /* BENTO */
@@ -1344,7 +1400,7 @@ a {
   left: 50%;
   transform: translateX(-50%);
   background: var(--grad);
-  color: #fff;
+  color: #f4f4f4;
   font-size: 0.73rem;
   font-weight: 700;
   padding: 4px 16px;
@@ -1380,7 +1436,7 @@ a {
   justify-content: center;
   flex-shrink: 0;
   font-size: 0.65rem;
-  color: #34d399;
+  color: var(--tx1);
   margin-top: 1px;
 }
 .tav {
@@ -1410,7 +1466,7 @@ a {
 }
 .acco .accordion-button:not(.collapsed) {
   background: rgba(92, 246, 182, 0.06);
-  color: #35b483;
+  color: #096838;
 }
 .acco .accordion-button::after {
   filter: invert(1) hue-rotate(220deg);
@@ -1494,7 +1550,7 @@ a {
   border-left: 1px solid var(--bd2);
 }
 .lm #lofc {
-  background: #f5f5ff;
+  background: #f4f4f4;
 }
 .offcanvas-header {
   border-bottom: 1px solid var(--bd);
@@ -1596,7 +1652,7 @@ a {
 }
 .tab-sw-btn.on {
   background: var(--grad);
-  color: #fff;
+  color: #f4f4f4;
 }
 .err-msg {
   background: rgba(113, 248, 203, 0.1);
@@ -1691,7 +1747,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #f4f4f4;
   font-size: 0.8rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -1764,7 +1820,7 @@ a {
 }
 .db-nl.active {
   background: rgba(92, 246, 220, 0.15);
-  color: #8bfae2;
+  color: #096838;
   font-weight: 600;
 }
 .db-nl.active::before {
@@ -1846,7 +1902,7 @@ a {
   font-weight: 600;
 }
 .delta-up {
-  color: #34d399;
+  color: #096838;
 }
 .delta-dn {
   color: #f87171;
@@ -1876,7 +1932,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #f4f4f4;
   font-size: 0.95rem;
   flex-shrink: 0;
 }
@@ -1885,7 +1941,7 @@ a {
   align-items: center;
   gap: 6px;
   font-size: 0.75rem;
-  color: #34d399;
+  color: #096838;
   font-weight: 600;
 }
 .chat-body {
@@ -1924,7 +1980,7 @@ a {
 }
 .msg-user {
   background: var(--grad);
-  color: #fff;
+  color: #f4f4f4;
   align-self: flex-end;
   border-radius: 14px 14px 4px 14px;
 }
@@ -1987,7 +2043,7 @@ a {
   border-radius: 12px;
   background: var(--grad);
   border: none;
-  color: #fff;
+  color: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2023,12 +2079,12 @@ a {
   flex-shrink: 0;
 }
 .ag-online {
-  background: #34d399;
-  box-shadow: 0 0 8px #34d399;
+  background: #096838;
+  box-shadow: 0 0 8px #0ea559;
 }
 .ag-busy {
-  background: #5cf6bb;
-  box-shadow: 0 0 8px #5cf6dc;
+  background: #063a26;
+  box-shadow: 0 0 8px #096838;
 }
 .ag-offline {
   background: #6b8a81;
@@ -2097,7 +2153,7 @@ a {
   height: 18px;
   left: 3px;
   top: 3px;
-  background: #fff;
+  background: #f4f4f4;
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -2193,7 +2249,7 @@ a {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #5cf6c8;
+  background: #096838;
   flex-shrink: 0;
   margin-top: 5px;
 }
