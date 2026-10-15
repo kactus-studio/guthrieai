@@ -600,6 +600,58 @@ body.light-mode .nav-links-group .nav-link:hover,
   border-color: rgba(255,255,255,0.1) !important;
 }
 
+/* ============================================================
+   ESTILOS DO FAQ COMPATÍVEIS COM DARK E LIGHT MODE
+   ============================================================ */
+
+/* --- 1. MODO ESCURO (DEFAULT: body sem classe .lm) --- */
+body:not(.lm) #faqAcc .accordion-item {
+  background-color: #13271e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body:not(.lm) #faqAcc .accordion-button {
+  color: #f4f4f4 !important;
+}
+
+body:not(.lm) #faqAcc .accordion-button:not(.collapsed) {
+  color: #f4f4f4 !important;
+  background-color: rgba(59, 246, 153, 0.05) !important;
+}
+
+body:not(.lm) #faqAcc .accordion-body {
+  color: #f4f4f4 !important;
+}
+
+body:not(.lm) #faqAcc .accordion-button::after {
+  filter: invert(1) brightness(200%);
+}
+
+
+/* --- 2. MODO CLARO (body.lm) --- */
+body.lm #faqAcc .accordion-item {
+  background-color: #f4f4f4 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+body.lm #faqAcc .accordion-button {
+  color: #0f172a !important; /* Texto escuro de alto contraste */
+}
+
+body.lm #faqAcc .accordion-button:not(.collapsed) {
+  color: #096838 !important; /* Verde escuro do Guthrie AI */
+  background-color: rgba(9, 104, 56, 0.06) !important;
+}
+
+body.lm #faqAcc .accordion-body {
+  color: #334155 !important; /* Cinza escuro legível */
+  background-color: #ffffff !important;
+}
+
+body.lm #faqAcc .accordion-button::after {
+  filter: none; /* Seta padrão escura no modo claro */
+}
+
 /* CÓDIGO COMPLETO */
 html {
   scroll-behavior: smooth;
