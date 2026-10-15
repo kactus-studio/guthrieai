@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   
+   <!-- Página Inicial (Index) -->
+   <url>
+      <loc>https://www.guthrieai.com/</loc>
+      <lastmod>2026-10-15</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   
+   <!-- Página Principal de Alternativa / Testes -->
+   <url>
+      <loc>https://www.guthrieai.com/index_test.html</loc>
+      <lastmod>2026-10-15</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
+
+   <!-- Página de Testemunhos / Clientes -->
+   <url>
+      <loc>https://www.guthrieai.com/testimonials.html</loc>
+      <lastmod>2026-10-15</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <!-- Página Individual de Estudo de Caso -->
+   <url>
+      <loc>https://www.guthrieai.com/case-study-single.html</loc>
+      <lastmod>2026-10-15</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+
+</urlset>
