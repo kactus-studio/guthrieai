@@ -720,3 +720,84 @@ body.lm #thbtn #suni {
 body.lm #thbtn #mooni {
   display: block !important;
 }
+
+/* ============================================================
+   ESTILOS DO FAQ / ACCORDION
+   ============================================================ */
+.acco .accordion-item {
+  background-color: var(--bg3) !important;
+  border: 1px solid var(--bd2) !important;
+  border-radius: 12px !important;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.acco .accordion-header {
+  margin: 0;
+}
+
+.acco .accordion-button {
+  background-color: transparent !important;
+  color: var(--tx) !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 20px 24px;
+  box-shadow: none !important;
+}
+
+.acco .accordion-button:not(.collapsed) {
+  color: var(--blu) !important;
+  background-color: var(--sf) !important;
+}
+
+body.lm .acco .accordion-button:not(.collapsed) {
+  color: #096838 !important;
+  background-color: rgba(9, 104, 56, 0.05) !important;
+}
+
+.acco .accordion-body {
+  color: var(--tx2) !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0 24px 24px 24px;
+  background-color: var(--sf);
+}
+
+body.lm .acco .accordion-body {
+  background-color: #ffffff;
+}
+
+/* Seta customizada do Bootstrap */
+.acco .accordion-button::after {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+body.lm .acco .accordion-button::after {
+  filter: none;
+}
+
+/* Garante que as seções com a classe .sp tenham espaçamento interno adequado */
+.sp {
+  padding: 80px 0 !important;
+  display: block !important;
+  width: 100% !important;
+  position: relative;
+}
+
+/* Garante texto branco nos itens do FAQ quando o acordeão for aberto no Modo Dark */
+body:not(.lm) .accordion-body {
+  color: #ffffff !important;
+}
+
+/* Garante que o título do botão do acordeão permanece branco legível no modo dark */
+body:not(.lm) .accordion-button {
+  color: #ffffff !important;
+}
+
+/* Regras de Alternância Visual para os Ícones dos Botões de Modo */
+.thbtn-toggle .suni { display: block !important; }
+.thbtn-toggle .mooni { display: none !important; }
+
+body.lm .thbtn-toggle .suni { display: none !important; }
+body.lm .thbtn-toggle .mooni { display: block !important; }

@@ -604,6 +604,15 @@ body.light-mode .nav-links-group .nav-link:hover,
    ESTILOS DO FAQ COMPATÍVEIS COM DARK E LIGHT MODE
    ============================================================ */
 
+/* Aplicando a fonte Manrope em toda a seção FAQ */
+#faq, 
+#faq h2, 
+#faq span, 
+#faq .accordion-button, 
+#faq .accordion-body {
+  font-family: 'Manrope', sans-serif !important;
+}
+
 /* --- 1. MODO ESCURO (DEFAULT: body sem classe .lm) --- */
 body:not(.lm) #faqAcc .accordion-item {
   background-color: #13271e !important;
