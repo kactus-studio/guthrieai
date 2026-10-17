@@ -9,7 +9,7 @@
   --tx2: #096838;
   --tx3: #096838;
   --pur: #0e914f;
-  --blu: #3bf699;
+  --blu: #e3f5ee;
   --grad: linear-gradient(135deg, #0e8f4e, #096838);
   --nav: 80px;
   --dsb: 240px;
@@ -24,6 +24,7 @@
   --tx: #0f1a0f;
   --tx2: #3d5c3f;
   --tx3: #79a078;
+  --blu: #e9f3ef;
 }
 *,
 *::before,
@@ -659,6 +660,110 @@ body.lm #faqAcc .accordion-body {
 
 body.lm #faqAcc .accordion-button::after {
   filter: none; /* Seta padrão escura no modo claro */
+}
+
+/* =========================================
+   CLIENTES - SWIPER / CARROSSEL DE LOGOS
+   ========================================= */
+
+.clients-swiper {
+  width: 100%;
+  overflow: hidden; /* Obrigatório para esconder o que sai da tela */
+}
+
+.clients-swiper .swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Seletor que pega tanto a logo única quanto as do carrossel */
+.client-logo img,
+.swiper-slide img {
+  /* filter: grayscale(100%); */
+  /* opacity: 0.6; */
+  transition: all 0.4s ease-in-out;
+  display: inline-block; /* Importante para o scale funcionar bem */
+}
+
+.client-logo img:hover,
+.swiper-slide img:hover {
+  /* filter: grayscale(0%); */
+  /* opacity: 1; */
+  transform: scale(1.2);
+}
+
+/* =========================================
+   BOX EM VOLTA DE CADA LOGO
+   ========================================= */
+
+/* Cobre os dois nomes de classe possíveis: clients-swiper E clients-slider */
+.clients-swiper .client-logo,
+.clients-slider .client-logo,
+.clients-swiper .swiper-slide.client-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  height: 100px;
+  width: 180px !important;
+
+  /* 🌞 MODO CLARO (padrão): Fundo cinza claro (#f4f4f4) */
+  background-color: #f4f4f4 !important;
+
+  /* Borda sutil que muda de cor conforme o tema para destacar o card */
+  border: 1px solid var(--bs-border-color);
+  border-radius: 12px;
+  cursor: pointer;
+
+  /* IMPEDIR QUE A IMAGEM SEJA CORTADA: Permite que a logo passe da borda ao crescer */
+  overflow: visible !important;
+
+  /* Suaviza a troca de cor entre os temas */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 🌙 MODO DARK: Fundo verde mais claro */
+/* No seu projeto o dark é o padrão e o light adiciona a classe .lm no <body>.
+   Portanto, o dark é quando o body NÃO tem a classe .lm. */
+body:not(.lm) .clients-swiper .client-logo,
+body:not(.lm) .clients-slider .client-logo,
+body:not(.lm) .clients-swiper .swiper-slide.client-logo {
+  background-color: #2e7d52 !important;
+  border-color: #3a9a60 !important;
+}
+
+/* =========================================
+   IMAGENS DENTRO DO BOX
+   ========================================= */
+
+.clients-swiper .client-logo img,
+.clients-slider .client-logo img,
+.clients-swiper .swiper-slide.client-logo img {
+  max-height: 50px;
+  width: auto;
+  object-fit: contain;
+
+  /* ANIMAÇÃO NA IMAGEM: Prepara a logo para crescer suavemente */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* =========================================
+   EFEITO HOVER
+   ========================================= */
+
+/* Ao passar o mouse no BOX, APENAS a IMAGEM aumenta */
+.clients-swiper .client-logo:hover img,
+.clients-slider .client-logo:hover img,
+.clients-swiper .swiper-slide.client-logo:hover img {
+  transform: scale(1.7);
+}
+
+/* Sombra sutil no box apenas para dar profundidade no hover */
+.clients-swiper .client-logo:hover,
+.clients-slider .client-logo:hover,
+.clients-swiper .swiper-slide.client-logo:hover {
+  z-index: 10;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* CÓDIGO COMPLETO */

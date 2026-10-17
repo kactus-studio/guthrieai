@@ -27,7 +27,7 @@ p, span, a, button, input, select, textarea,
   --sf: #162a22;
   --bd: rgba(255, 255, 255, 0.07);
   --bd2: rgba(255, 255, 255, 0.13);
-  --tx: #f4f4f4;
+  --tx: #e3f5ee;
   --tx2: #096838;
   --tx3: #096838;
   --pur: #096838;
@@ -376,6 +376,30 @@ body.lm .hero-testimonials-section p {
   font-weight: 700;
   padding: 4px 8px;
   border-radius: 4px;
+}
+
+/* =========================================
+   CARDS DE CASE STUDY - TEXTO DO DEPOIMENTO E MÉTRICA
+   ========================================= */
+
+/* 🌙 MODO DARK (padrão, sem .lm): texto BRANCO */
+.bb-card .card-content p {
+  color: #ffffff !important;
+}
+
+.bb-card .card-footer-metric .micro-text,
+.bb-card .card-footer-metric small {
+  color: #ffffff !important;
+}
+
+/* 🌞 MODO LIGHT (body.lm): texto VERDE */
+body.lm .bb-card .card-content p {
+  color: #198754 !important; /* Verde Bootstrap (mesmo dos títulos) */
+}
+
+body.lm .bb-card .card-footer-metric .micro-text,
+body.lm .bb-card .card-footer-metric small {
+  color: #198754 !important;
 }
 
 /* ============================================================
