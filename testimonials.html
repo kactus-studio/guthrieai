@@ -71,6 +71,18 @@
       gtag('js', new Date());
       gtag('config', 'G-KY9X582TDV');
       </script>
+
+      <!-- CSS PERSONALIZADO PARA OS TEXTOS -->
+      <style>
+        /* Texto branco no modo escuro (padrão) */
+        .text-custom-filter {
+          color: #ffffff !important;
+        }
+        /* Texto verde no modo light (quando o body tem a classe .lm) */
+        body.lm .text-custom-filter {
+          color: #096838 !important;
+        }
+      </style>
    </head>
 <body class="bg-dark text-white">
       <button id="backToTop" class="btn-back-to-top" title="Voltar ao topo">
@@ -183,7 +195,7 @@
             From commercial glazing to large-scale general contracting, discover how leading construction teams eliminate preconstruction admin, scale bidding capacity, and win more profitable work.
           </p>
           <div class="d-flex flex-wrap gap-3">
-            <a href="#customer-grid-section" class="btn btn-success btn-lg px-4 py-3 fw-bold rounded-1">Explore Stories</a>
+            <a href="#customer-grid-section" class="btn btn-success btn-lg px-4 py-3 fw-bold rounded-1">Explore Testimonials</a>
             <a href="#featured-story" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-1">Watch Highlight Video</a>
           </div>
         </div>
@@ -207,7 +219,7 @@
           </div>
         </div>
         <div class="col-lg-5">
-          <h2 class="fw-bold text-white mb-3" style="font-size: 3rem !important;">"Company X"</h2>
+          <h2 class="fw-bold text-white mb-3" style="font-size: 3rem !important;">Meet your AI Apprentice</h2>
           <p class="fs-5 fstyle-italic mb-4" style="color: var(--tx1);">
             "Guthrie's Virtual Bid Assistants have really taken away the grunt aspect of estimating. Now I can do more scope reviews, get out of the office and meet customers more."
           </p>
@@ -217,8 +229,8 @@
         <div class="metric-label text-white fs-6">Increase in total value of commercial bids submitted in 6 months</div>
         </div>
 
-          <a href="case-study-single.html?id=baumgardner" class="bb-link-btn fw-bold text-success text-white d-inline-flex align-items-center gap-2">
-            READ FULL CASE STUDY
+          <a href="#customer-grid-section" class="bb-link-btn fw-bold text-success text-white d-inline-flex align-items-center gap-2">
+            EXPLORE TESTIMONIALS
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -226,67 +238,72 @@
     </div>
   </section>
 
-<section class="py-4 logo-carousel-section border-bottom border-top border-secondary border-opacity-10 overflow-hidden">
-  <div class="container">
-    <p class="text-center text-muted small text-uppercase fw-bold tracking-wider mb-4">
-      Trusted by Leading Contractors & Preconstruction Teams Nationwide
-    </p><br>
-    <div class="logo-marquee-wrapper">
-      <div class="logo-marquee-track">
-        <div class="logo-item"><img src="./img/clients/client-1.png" alt="The Baumgardner Group"></div>
-        <div class="logo-item"><img src="./img/clients/client-2.png" alt="Guthrie Glass"></div>
-        <div class="logo-item"><img src="./img/clients/client-3.png" alt="B Finishings"></div>
-        <div class="logo-item"><img src="./img/clients/client-4.png" alt="Apex Builders"></div>
-        <div class="logo-item"><img src="./img/clients/client-5a.png" alt="BuildingConnected Partner"></div>
-        <div class="logo-item"><img src="./img/clients/client-6.png" alt="Bluebeam Partner"></div>
-        <div class="logo-item"><img src="./img/clients/client-1.png" alt="The Baumgardner Group"></div>
-        <div class="logo-item"><img src="./img/clients/client-2.png" alt="Guthrie Glass"></div>
-        <div class="logo-item"><img src="./img/clients/client-3.png" alt="B Finishings"></div>
-        <div class="logo-item"><img src="./img/clients/client-4.png" alt="Apex Builders"></div>
+  <section class="py-4 logo-carousel-section border-bottom border-top border-secondary border-opacity-10 overflow-hidden">
+    <div class="container">
+      <p class="text-center text-muted small text-uppercase fw-bold tracking-wider mb-4">
+        Trusted by Leading Contractors & Preconstruction Teams Nationwide
+      </p><br>
+      <div class="logo-marquee-wrapper">
+        <div class="logo-marquee-track">
+          <div class="logo-item"><img src="./img/clients/client-1.png" alt="The Baumgardner Group"></div>
+          <div class="logo-item"><img src="./img/clients/client-2.png" alt="Guthrie Glass"></div>
+          <div class="logo-item"><img src="./img/clients/client-3.png" alt="B Finishings"></div>
+          <div class="logo-item"><img src="./img/clients/client-4.png" alt="Apex Builders"></div>
+          <div class="logo-item"><img src="./img/clients/client-5a.png" alt="BuildingConnected Partner"></div>
+          <div class="logo-item"><img src="./img/clients/client-6.png" alt="Bluebeam Partner"></div>
+          <div class="logo-item"><img src="./img/clients/client-1.png" alt="The Baumgardner Group"></div>
+          <div class="logo-item"><img src="./img/clients/client-2.png" alt="Guthrie Glass"></div>
+          <div class="logo-item"><img src="./img/clients/client-3.png" alt="B Finishings"></div>
+          <div class="logo-item"><img src="./img/clients/client-4.png" alt="Apex Builders"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="customer-grid-section" class="py-5">
     <div class="container py-4">
       
-      <div class="filter-bar-wrapper bg-black p-4 rounded-3 border border-secondary border-opacity-25 mb-5">
-        <div class="row g-3">
-          
-          <div class="col-lg-3 col-md-6">
-            <label class="form-label text-secondary small fw-bold text-uppercase">Search</label>
-            <div class="position-relative">
-              <input type="text" id="search-input" class="form-select bg-dark text-white border-secondary ps-4" placeholder="Keywords or company...">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <label class="form-label text-secondary small fw-bold text-uppercase">Specialty / Role</label>
-            <select id="filter-role" class="form-select bg-dark text-white border-secondary">
-              <option value="all">All Roles</option>
-              <option value="estimating">Estimators & Chief Estimators</option>
-              <option value="executives">Presidents & Operations</option>
-              <option value="precon">Preconstruction Managers</option>
-            </select>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <label class="form-label text-secondary small fw-bold text-uppercase">Goal / Outcome</label>
-            <select id="filter-goal" class="form-select bg-dark text-white border-secondary">
-              <option value="all">All Outcomes</option>
-              <option value="scale">Scale Bid Volume</option>
-              <option value="rfi">Automate RFI & Scope</option>
-              <option value="deadlines">100% Bid Compliance</option>
-            </select>
-          </div>
-
+  <div class="filter-bar-wrapper bg-black p-4 rounded-3 border border-secondary border-opacity-25 mb-5">
+    <div class="row g-3 align-items-end">
+      
+      <div class="col-lg-4 col-md-6">
+        <label class="form-label text-custom-filter small fw-bold text-uppercase">Search</label>
+        <div class="position-relative">
+          <input type="text" id="search-input" class="form-select bg-dark text-white border-secondary ps-4" placeholder="Keywords or company...">
         </div>
       </div>
 
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label text-custom-filter small fw-bold text-uppercase">Specialty / Role</label>
+        <select id="filter-role" class="form-select bg-dark text-white border-secondary">
+          <option value="all">All Roles</option>
+          <option value="estimating">Estimators & Chief Estimators</option>
+          <option value="executives">Presidents & Operations</option>
+          <option value="precon">Preconstruction Managers</option>
+        </select>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label text-custom-filter small fw-bold text-uppercase">Goal / Outcome</label>
+        <select id="filter-goal" class="form-select bg-dark text-white border-secondary">
+          <option value="all">All Outcomes</option>
+          <option value="scale">Scale Bid Volume</option>
+          <option value="rfi">Automate RFI & Scope</option>
+          <option value="deadlines">100% Bid Compliance</option>
+        </select>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <span id="results-count" class="text-custom-filter small fw-bold">Showing 2 Stories</span>
+      </div>
+
+    </div>
+  </div>
+
       <div class="row g-4" id="stories-container">
 
-        <div class="col-md-6 col-lg-4 story-card-item" data-sector="glazing" data-role="executives" data-goal="scale" data-keywords="guthrie glass glazing scale">
+        <!-- CARD 1: NES -->
+        <div class="col-md-6 col-lg-4 story-card-item" data-sector="glazing" data-role="executives" data-goal="scale" data-keywords="guthrie glass glazing scale nes northeast envelope">
           <div class="bb-card h-100 bg-black border border-secondary border-opacity-25 rounded-3 overflow-hidden d-flex flex-column">
             <div class="card-img-holder position-relative">
               <a href="./cases/nes.html"><img src="https://i.ytimg.com/vi/8ap8g3aijbM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCsimCVZCufH2xpUGIRP0rO5AdtAw" class="w-100 object-fit-cover" height="220" alt="Northeast Envelope Solutions"></a>
@@ -294,15 +311,15 @@
             </div>
             <div class="card-content p-4 d-flex flex-column flex-grow-1">
               <span class="sector-label text-success fw-bold text-uppercase small mb-2">NES - Northeast Envelope Solutions</span>
-              <!-- <h3 class="h5 fw-bold text-white mb-3">NES - Northeast Envelope Solutions</h3> -->
-              <p class="text-secondary small flex-grow-1 mb-4" style="color: var(--tx);">
+              
+              <p class="text-custom-filter small flex-grow-1 mb-4">
                 "The Guthrie team does my takeoff, provides my overview. I’m still going in and finalizing the proposal."
               </p>
               
               <div class="card-footer-metric pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
                 <div>
                   <div class="fw-bold text-success h5 mb-0">+$1.5M</div>
-                  <small class="text-secondary micro-text">Revenue</small>
+                  <small class="text-custom-filter micro-text">Revenue</small>
                 </div>
                 <a href="cases/nes.html" class="btn btn-sm btn-outline-success fw-bold">See more &rarr;</a>
               </div>
@@ -310,23 +327,24 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 story-card-item" data-sector="commercial" data-role="precon" data-goal="deadlines" data-keywords="apex commercial builders general deadlines">
+        <!-- CARD 2: DP GLASS (CORRIGIDO) -->
+        <div class="col-md-6 col-lg-4 story-card-item" data-sector="commercial" data-role="precon" data-goal="deadlines" data-keywords="dp glass co commercial glazing deadlines">
           <div class="bb-card h-100 bg-black border border-secondary border-opacity-25 rounded-3 overflow-hidden d-flex flex-column">
             <div class="card-img-holder position-relative">
-              <a href="./cases/dpglass.html"><img src="https://i.ytimg.com/vi/CcnfNEWqldc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBHdcDa3ckSnj341a81QV4mPxyo1w" class="w-100 object-fit-cover" height="220" alt="Apex Commercial"></a>
+              <a href="./cases/dpglass.html"><img src="https://i.ytimg.com/vi/CcnfNEWqldc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBHdcDa3ckSnj341a81QV4mPxyo1w" class="w-100 object-fit-cover" height="220" alt="DP Glass Co."></a>
               <span class="card-type-tag">Video & Story</span>
             </div>
             <div class="card-content p-4 d-flex flex-column flex-grow-1">
               <span class="sector-label text-success fw-bold text-uppercase small mb-2">DP Glass Co.</span>
-              <!-- <h3 class="h5 fw-bold text-white mb-3">Apex Commercial Builders</h3> -->
-              <p class="text-secondary small flex-grow-1 mb-4">
+              
+              <p class="text-custom-filter small flex-grow-1 mb-4">
                 "Before GuthrieAI, It was just frustrating and really hard to scale."
               </p>
               
               <div class="card-footer-metric pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
                 <div>
                   <div class="fw-bold text-success h5 mb-0">100%</div>
-                  <small class="text-secondary micro-text">Takeoffs</small>
+                  <small class="text-custom-filter micro-text">Takeoffs</small>
                 </div>
                 <a href="cases/dpglass.html" class="btn btn-sm btn-outline-success fw-bold">See more &rarr;</a>
               </div>
@@ -334,35 +352,11 @@
           </div>
         </div>
 
-        <!-- <div class="col-md-6 col-lg-4 story-card-item" data-sector="interiors" data-role="estimating" data-goal="rfi" data-keywords="b finishings interiors drywall rfi admin">
-          <div class="bb-card h-100 bg-black border border-secondary border-opacity-25 rounded-3 overflow-hidden d-flex flex-column">
-            <div class="card-img-holder position-relative">
-              <img src="./img/case-interior.jpg" class="w-100 object-fit-cover" height="220" alt="B Finishings">
-              <span class="card-type-tag">Case Study</span>
-            </div>
-            <div class="card-content p-4 d-flex flex-column flex-grow-1">
-              <span class="sector-label text-success fw-bold text-uppercase small mb-2">Drywall & Interiors</span>
-              <h3 class="h5 fw-bold text-white mb-3">B Finishings & Interiors</h3>
-              <p class="text-secondary small flex-grow-1 mb-4">
-                "Reduced administrative RFP review time by over 80%, giving estimators time back for pricing."
-              </p>
-              
-              <div class="card-footer-metric pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
-                <div>
-                  <div class="fw-bold text-success h5 mb-0">80%</div>
-                  <small class="text-secondary micro-text">Admin Time Saved</small>
-                </div>
-                <a href="case-study-single.html?id=b-finishings" class="btn btn-sm btn-outline-success fw-bold">Read Story &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
       </div>
 
       <div id="no-results-msg" class="text-center py-5 d-none">
         <h4 class="text-white fw-bold">No customer stories found matching your filter criteria.</h4>
-        <p class="text-secondary">Try resetting your filters or searching for different keywords.</p>
+        <p class="text-custom-filter">Try resetting your filters or searching for different keywords.</p>
         <button id="reset-filters-btn" class="btn btn-outline-success px-4 py-2 mt-2">Reset All Filters</button>
       </div>
 
@@ -393,7 +387,7 @@
     </div>
   </div>
 
-<section id="faq" class="sp" style="display: block !important; width: 100% !important; padding: 80px 0 !important; background: var(--bg2);">
+<section id="faq" class="sp" style="display: block !important; width: 100% !important; padding: 80px 0 !important; background: var(--bg);">
    <div class="container">
       <div class="text-center mb-5">
         <span class="slbl">FAQ's</span>

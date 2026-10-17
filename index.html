@@ -107,7 +107,7 @@
                      <a href="#features" class="nav-link">ROI Analysis</a>
                      <a href="#integrations" class="nav-link">Integrations</a>
                      <a href="#pricing" class="nav-link">Pricing</a>
-                     <a href="#" class="nav-link">Client Testimonials</a>
+                     <a href="testimonials.html" class="nav-link">Client Testimonials</a>
                   </div>
                   
                   <div class="d-flex align-items-center gap-2 flex-shrink: 0;">
@@ -142,7 +142,7 @@
             <a href="#features" class="nav-link d-block py-3 border-bottom" style="border-color:var(--bd)!important">ROI Analysis</a>
             <a href="#integrations" class="nav-link d-block py-3 border-bottom" style="border-color:var(--bd)!important">Integrations</a>
             <a href="#pricing" class="nav-link d-block py-3 border-bottom" style="border-color:var(--bd)!important">Pricing</a>
-            <a href="#" class="nav-link d-block py-3">Client Testimonials</a>
+            <a href="testimonials.html" class="nav-link d-block py-3">Client Testimonials</a>
             <div class="d-flex gap-2 mt-3">
                <a target="_blank" href="https://app.guthrieai.com/login"><button class="boc flex-fill py-2 btn">Log in</button></a>
                <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" 
@@ -758,7 +758,7 @@
                 <!-- Sidebar com Imagem de Perfil e Menu -->
                 <div class="dside" style="min-width: 200px; padding: 15px;">
                     <div style="text-align: center; margin-bottom: 15px;">
-                        <img src="img/menu/guthrieai_assistant.png" alt="GurthrieAi Assistent" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
+                        <img src="img/menu/guthrieai_assistant.png" alt="GuthrieAI Apprentice" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
                     </div>
                     
                     <div style="font-size:.64rem;text-transform:uppercase;letter-spacing:.1em;color:var(--tx1);padding:10px;font-weight:700">Overview</div>
@@ -991,7 +991,7 @@ function toggleView(view) {
                   </div>
                </div>
                <h5>Ted Baumgardner</h5>
-               <p style="color: #096838">CEO</p>
+               <p style="color: #09683994">CEO</p>
             </div>
          </div>
          <!-- Team 2 -->
@@ -1004,7 +1004,7 @@ function toggleView(view) {
                   </div>
                </div>
                <h5>Tuneer De</h5>
-               <p style="color: #096838">Head of Product</p>
+               <p style="color: #09683994">Head of Product</p>
             </div>
          </div>
       </div>
@@ -1104,7 +1104,7 @@ function toggleView(view) {
          </section> -->
 
 <!-- SEÇÃO DE FAQ -->
-<section id="faq" class="sp" style="display: block !important; width: 100% !important; padding: 80px 0 !important; background: var(--bg2);">
+<section id="faq" class="sp" style="display: block !important; width: 100% !important; padding: 80px 0 !important; background: var(--bg);">
    <div class="container">
       <div class="text-center mb-5">
          <!-- <span style="color: #096838; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">FAQ</span> -->
@@ -1215,7 +1215,7 @@ function toggleView(view) {
                   </div>
                   <div class="col-6 col-md-2 fcol">
                      <h5 style="color:#096838;">Product</h5>
-                     </a> <a href="#features">ROI Analysis</a><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a><a href="#">Client Testimonials</a>
+                     </a> <a href="#features">ROI Analysis</a><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a><a href="testimonials.html">Client Testimonials</a>
                   </div>
                   <!-- <div class="col-6 col-md-2 fcol">
                      <h5>Resources</h5>
@@ -2288,33 +2288,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Sistema de FOMO Rotativo Dinâmico
-const fomoMessages = [
-  "🔥 <strong style='color:#198754'>High Demand:</strong> 14 new contractors started onboarding in the last 24 hours.",
-  "⚡ <strong style='color:#198754'>Trend:</strong> Project volume generated in Texas grew 32% this month.",
-  "⚠️ <strong style='color:#198754'>Attention:</strong> Automated onboarding for new construction firms closes batch soon.",
-  "🚀 <strong style='color:#198754'>Live:</strong> A major New York contractor just automated their estimations."
-];
-
-function initFomoTicker() {
-  const fomoEl = document.getElementById('fomo-dynamic-text');
-  if (!fomoEl) return;
-
-  let index = 0;
-  // Define a primeira mensagem logo de imediato
-  fomoEl.innerHTML = fomoMessages[0];
-
-  // Alterna a mensagem a cada 6 segundos criando um gatilho dinâmico de urgência
-  setInterval(() => {
-    index = (index + 1) % fomoMessages.length;
-    fomoEl.style.opacity = 0;
-    setTimeout(() => {
-      fomoEl.innerHTML = fomoMessages[index];
-      fomoEl.style.opacity = 1;
-    }, 300);
-  }, 6000);
-}
-
 // Chame esta função dentro do seu DOMContentLoaded ou logo após carregar o mapa
 document.addEventListener('DOMContentLoaded', () => {
   initFomoTicker();
@@ -2330,6 +2303,84 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('roiInputsScreen').style.display = 'none';
     document.getElementById('roiOutputsScreen').style.display = 'block';
   }
+</script>
+
+<script>
+  (function() {
+    // Mensagens padrão enquanto a API carrega ou se ela falhar
+    const defaultFomoMessages = [
+      "🔥 <strong style='color:#198754'>High Demand:</strong> 14 new contractors started onboarding in the last 24 hours.",
+      "⚡ <strong style='color:#198754'>Trend:</strong> Project volume generated in Texas grew 32% this month.",
+      "⚠️ <strong style='color:#198754'>Attention:</strong> Automated onboarding for new construction firms closes batch soon.",
+      "🚀 <strong style='color:#198754'>Live:</strong> A major Philadelphia contractor just automated their estimations."
+    ];
+
+    let fomoInterval = null;
+
+    function initFomoTicker(messages) {
+      const fomoEl = document.getElementById('fomo-dynamic-text');
+      if (!fomoEl) return;
+
+      // Limpa timer anterior se existir
+      if (fomoInterval) clearInterval(fomoInterval);
+
+      // Embaralha as mensagens
+      const shuffledMessages = [...messages].sort(() => 0.5 - Math.random());
+      let index = 0;
+
+      // Define a primeira imediatamente
+      fomoEl.style.opacity = 1;
+      fomoEl.innerHTML = shuffledMessages[index];
+
+      // Alterna as mensagens
+      fomoInterval = setInterval(() => {
+        index = (index + 1) % shuffledMessages.length;
+        fomoEl.style.opacity = 0;
+        
+        setTimeout(() => {
+          fomoEl.innerHTML = shuffledMessages[index];
+          fomoEl.style.opacity = 1;
+        }, 300);
+      }, 6000);
+    }
+
+    // 1. Inicia com mensagens genéricas imediatamente ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+      initFomoTicker(defaultFomoMessages);
+    });
+
+    // 2. Escuta o evento do mapa-live.js quando os dados reais chegarem
+    document.addEventListener('guthrieMapDataReady', (e) => {
+      const { projectsData, total } = e.detail;
+      
+      if (!projectsData || projectsData.length === 0) return;
+
+      // Encontra o líder de projetos
+      const topLocation = projectsData.reduce((max, item) => {
+        return (item.count || 1) > (max.count || 1) ? item : max;
+      }, projectsData[0]);
+
+      // Escolhe um local aleatório
+      const randomLocation = projectsData[Math.floor(Math.random() * projectsData.length)];
+
+      // Conta locais únicos
+      const uniqueLocations = new Set(projectsData.map(p => p.location?.trim().toUpperCase())).size;
+
+      // Formata o número total
+      const formatTotal = total >= 1000 ? (total / 1000).toFixed(1) + 'k' : total;
+
+      // Cria as mensagens dinâmicas
+      const dynamicMessages = [
+        `🔥 <strong style='color:#198754'>High Demand:</strong> ${formatTotal}+ active projects currently being tracked nationwide.`,
+        `⚡ <strong style='color:#198754'>Trend:</strong> Project volume in ${topLocation.location} is leading with ${topLocation.count || 1} active bids.`,
+        `📍 <strong style='color:#198754'>Network:</strong> Connecting ${uniqueLocations} active construction hubs across the country.`,
+        `🚀 <strong style='color:#198754'>Live:</strong> A contractor in ${randomLocation.location} just generated a new estimate.`
+      ];
+
+      // Reinicia o ticker com as mensagens dinâmicas
+      initFomoTicker(dynamicMessages);
+    });
+  })();
 </script>
 
 <script>
