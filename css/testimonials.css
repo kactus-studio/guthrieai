@@ -402,6 +402,16 @@ body.lm .bb-card .card-footer-metric small {
   color: #198754 !important;
 }
 
+  /* Cor branca no modo escuro (padrão) */
+  .text-custom-filter {
+    color: #ffffff !important;
+  }
+
+  /* Cor verde no modo light */
+  body.lm .text-custom-filter {
+    color: #096838 !important;
+  }
+
 /* ============================================================
    CARROSSEL INFINITO DE LOGOS (MARQUEE)
    ============================================================ */
