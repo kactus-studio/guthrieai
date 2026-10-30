@@ -4,7 +4,7 @@
     <!-- Página Inicial -->
     <url>
         <loc>https://www.guthrieai.com/</loc>
-        <lastmod>2026-10-17</lastmod>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -12,7 +12,7 @@
     <!-- Página de Depoimentos (Client Testimonials) -->
     <url>
         <loc>https://www.guthrieai.com/testimonials.html</loc>
-        <lastmod>2026-10-17</lastmod>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -20,7 +20,7 @@
     <!-- Estudo de Caso: Northeast Envelope Solutions -->
     <url>
         <loc>https://www.guthrieai.com/cases/nes.html</loc>
-        <lastmod>2026-10-17</lastmod>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -28,9 +28,39 @@
     <!-- Estudo de Caso: DP Glass Co. -->
     <url>
         <loc>https://www.guthrieai.com/cases/dpglass.html</loc>
-        <lastmod>2026-10-17</lastmod>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <!-- Estudo de Caso: Glass and Metals -->
+    <url>
+        <loc>https://www.guthrieai.com/cases/glassandmetals.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Páginas Legais -->
+    <url>
+        <loc>https://www.guthrieai.com/terms.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://www.guthrieai.com/privacy.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://www.guthrieai.com/cookie.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 
 </urlset>
