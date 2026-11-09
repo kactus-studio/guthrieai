@@ -449,8 +449,13 @@ if (mbToggler && mbMenu) {
                </div>
 
                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 pt-4" style="border-top:1px solid var(--bd)">
-                  <p style="font-size:.8rem;color:var(--tx1);margin:0">GuthrieAI &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved<br>Developed by <a target="_blank" href="https://www.kactusstudio.com.br/index_us.html" style="color: var(--tx2);">kactus studio</a> </p>
-                  <div class="d-flex gap-2">
+                  <p style="font-size:.8rem;color:var(--tx1);margin:0">
+                  GuthrieAI &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved<br>
+                  <a target="_blank" href="https://www.kactusstudio.com.br/index_us.html" style="color: var(--tx2); display: inline-flex; align-items: center; text-decoration: none;">
+                     <img id="kactus-logo-img" src="img/kactusstudio1.png" alt="Kactus Studio" style="height: 18px; width: auto;">
+                  </a>
+                  </p>
+                <div class="d-flex gap-2">
                   <a target="_blank" href="https://www.linkedin.com/company/guthrie-ai/" class="sico d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px; padding: 0;" title="LinkedIn">
                      <div style="width: 17px; height: 17px; background-color: var(--tx2); -webkit-mask: url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg') no-repeat center; mask: url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>
                   </a>
@@ -497,6 +502,51 @@ document.addEventListener("DOMContentLoaded", function () {
   backToTopBtn.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const kactusLogo = document.getElementById('kactus-logo-img');
+    if (!kactusLogo) {
+        console.warn('[kactus] Elemento #kactus-logo-img não encontrado.');
+        return;
+    }
+
+    // Verifica .lm em QUALQUER um dos elementos possíveis
+    function isLightMode() {
+        const htmlRoot = document.getElementById('htmlRoot');
+        return (
+            document.documentElement.classList.contains('lm') ||
+            document.body.classList.contains('lm') ||
+            (htmlRoot && htmlRoot.classList.contains('lm'))
+        );
+    }
+
+    function updateKactusLogo() {
+        const light = isLightMode();
+        const targetSrc = light ? 'img/kactusstudio2.png' : 'img/kactusstudio1.png';
+        if (kactusLogo.getAttribute('src') !== targetSrc) {
+            kactusLogo.src = targetSrc;
+            console.log('[kactus] modo=' + (light ? 'LIGHT' : 'DARK') + ' → ' + targetSrc);
+        }
+    }
+
+    // 1. Roda na carga inicial
+    updateKactusLogo();
+
+    // 2. Observa mudanças de classe em html, body e #htmlRoot
+    const observer = new MutationObserver(updateKactusLogo);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    const htmlRoot = document.getElementById('htmlRoot');
+    if (htmlRoot) {
+        observer.observe(htmlRoot, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // 3. Fallback extra: também atualiza após cliques nos botões de tema
+    document.querySelectorAll('#thbtn, .theme-mobile-btn').forEach(btn => {
+        btn.addEventListener('click', () => setTimeout(updateKactusLogo, 60));
+    });
 });
 </script>
 </body>

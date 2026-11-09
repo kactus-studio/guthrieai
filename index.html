@@ -143,6 +143,7 @@
                </a>
             </div>
          </div>
+         
          <!-- HERO -->
          <section id="hero">
             <video autoplay loop muted playsinline class="position-absolute top-50 start-50 translate-middle w-100 h-100" style="object-fit: cover; z-index: 1; pointer-events: none; opacity: 0.25;">
@@ -1077,43 +1078,61 @@ function toggleView(view) {
    });
 </script>
 
-<!-- TEAM SECTION -->
+<!-- TEAM SECTION (AJUSTADA) -->
 <section id="team" class="py-5" style="background-color: var(--bg1); position: relative;">
    <div class="container">
-      <div class="text-center mb-5">
-         <span class="slbl">Meet the Team</span>
-         <h2 class="stitle">The minds powering Guthrie AI</h2>
-         <p class="ssub mx-auto" style="color: var(--tx1);">
-            Combining global talent with AI-enabled precision to help contractors scale, reduce risk, and focus on what truly matters.
-         </p>
-      </div>
-      <div class="row justify-content-center g-4">
-         <!-- Team 1 -->
-         <div class="col-md-4 text-center">
-            <div class="team-card">
-               <div class="img-wrapper">
-                  <img src="img/team/ted.png" alt="Member 1" class="img-fluid mb-3" style="width: 100%; height: 250px; object-fit: cover;">
-                  <div class="overlay">
-                     <a href="https://www.linkedin.com/in/ted-baumgardner/" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+      <div class="row align-items-center g-5">
+         
+         <!-- Lado Esquerdo: Texto -->
+         <div class="col-lg-6">
+            <span class="slbl">Meet the Team</span>
+            <h2 class="stitle mb-4">Our Founders</h2>
+            <p style="color: var(--tx1); font-size: 1.1rem; margin-bottom: 1.2rem; line-height: 1.6;">
+               We are a global team of trade experts and AI engineers working together to make bidding easier.
+            </p>
+            <p style="color: var(--tx1); font-size: 1.1rem; margin-bottom: 1.2rem; line-height: 1.6;">
+               Our trade experts know the drawings, the details, and have lived the pressure of a deadline. Our engineers bring the AI expertise to turn that knowledge into useful tools.
+            </p>
+            <p style="color: var(--tx1); font-size: 1.1rem; line-height: 1.6;">
+               We’re all passionate about the same goal: <strong>less busywork for contractors, more time to build relationships and win profitable work.</strong>
+            </p>
+         </div>
+
+         <!-- Lado Direito: Imagens -->
+         <div class="col-lg-6">
+            <div class="row justify-content-center justify-content-lg-end g-4">
+               
+               <!-- Team 1: Ted -->
+               <div class="col-6 col-md-5 text-center">
+                  <div class="team-card">
+                     <div class="img-wrapper position-relative overflow-hidden rounded-4 mb-3">
+                        <img src="img/team/ted.png" alt="Ted Baumgardner" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                        <div class="overlay d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.3s;">
+                           <a href="https://www.linkedin.com/in/ted-baumgardner/" target="_blank" style="color: white;"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+                        </div>
+                     </div>
+                     <h5 style="font-size: 1.15rem; margin-bottom: 2px;">Ted Baumgardner</h5>
+                     <p style="color: #11a75c94; font-size: 0.9rem; font-weight: 600;">CEO</p>
                   </div>
                </div>
-               <h5>Ted Baumgardner</h5>
-               <p style="color: #11a75c94">CEO</p>
-            </div>
-         </div>
-         <!-- Team 2 -->
-         <div class="col-md-4 text-center">
-            <div class="team-card">
-               <div class="img-wrapper">
-                  <img src="img/team/tuneerde.png" alt="Member 2" class="img-fluid mb-3" style="width: 100%; height: 250px;">
-                  <div class="overlay">
-                     <a href="https://www.linkedin.com/in/tuneer-de-16b09910a/" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+
+               <!-- Team 2: Tuneer -->
+               <div class="col-6 col-md-5 text-center">
+                  <div class="team-card">
+                     <div class="img-wrapper position-relative overflow-hidden rounded-4 mb-3">
+                        <img src="img/team/tuneerde.png" alt="Tuneer De" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                        <div class="overlay d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.3s;">
+                           <a href="https://www.linkedin.com/in/tuneer-de-16b09910a/" target="_blank" style="color: white;"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+                        </div>
+                     </div>
+                     <h5 style="font-size: 1.15rem; margin-bottom: 2px;">Tuneer De</h5>
+                     <p style="color: #11a75c94; font-size: 0.9rem; font-weight: 600;">Head of Product</p>
                   </div>
                </div>
-               <h5>Tuneer De</h5>
-               <p style="color: #11a75c94">Head of Product</p>
+
             </div>
          </div>
+
       </div>
    </div>
 </section>
@@ -1326,7 +1345,12 @@ function toggleView(view) {
                </div>
 
                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 pt-4" style="border-top:1px solid var(--bd)">
-                  <p style="font-size:.8rem;color:var(--tx1);margin:0">GuthrieAI &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved<br>Developed by <a target="_blank" href="https://www.kactusstudio.com.br/index_us.html" style="color: var(--tx2);">kactus studio</a> </p>
+                  <p style="font-size:.8rem;color:var(--tx1);margin:0">
+                  GuthrieAI &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved<br>
+                  <a target="_blank" href="https://www.kactusstudio.com.br/index_us.html" style="color: var(--tx2); display: inline-flex; align-items: center; text-decoration: none;">
+                     <img id="kactus-logo-img" src="img/kactusstudio1.png" alt="Kactus Studio" style="height: 18px; width: auto;">
+                  </a>
+                  </p>
                   <div class="d-flex gap-2">
                   <a target="_blank" href="https://www.linkedin.com/company/guthrie-ai/" class="sico d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px; padding: 0;" title="LinkedIn">
                      <div style="width: 17px; height: 17px; background-color: var(--tx2); -webkit-mask: url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg') no-repeat center; mask: url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>
@@ -1707,6 +1731,51 @@ document.addEventListener('DOMContentLoaded', () => {
     "name": "United States"
   }
 }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const kactusLogo = document.getElementById('kactus-logo-img');
+    if (!kactusLogo) {
+        console.warn('[kactus] Elemento #kactus-logo-img não encontrado.');
+        return;
+    }
+
+    // Verifica .lm em QUALQUER um dos elementos possíveis
+    function isLightMode() {
+        const htmlRoot = document.getElementById('htmlRoot');
+        return (
+            document.documentElement.classList.contains('lm') ||
+            document.body.classList.contains('lm') ||
+            (htmlRoot && htmlRoot.classList.contains('lm'))
+        );
+    }
+
+    function updateKactusLogo() {
+        const light = isLightMode();
+        const targetSrc = light ? 'img/kactusstudio2.png' : 'img/kactusstudio1.png';
+        if (kactusLogo.getAttribute('src') !== targetSrc) {
+            kactusLogo.src = targetSrc;
+            console.log('[kactus] modo=' + (light ? 'LIGHT' : 'DARK') + ' → ' + targetSrc);
+        }
+    }
+
+    // 1. Roda na carga inicial
+    updateKactusLogo();
+
+    // 2. Observa mudanças de classe em html, body e #htmlRoot
+    const observer = new MutationObserver(updateKactusLogo);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    const htmlRoot = document.getElementById('htmlRoot');
+    if (htmlRoot) {
+        observer.observe(htmlRoot, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // 3. Fallback extra: também atualiza após cliques nos botões de tema
+    document.querySelectorAll('#thbtn, .theme-mobile-btn').forEach(btn => {
+        btn.addEventListener('click', () => setTimeout(updateKactusLogo, 60));
+    });
+});
 </script>
    </body>
 </html>
