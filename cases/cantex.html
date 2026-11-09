@@ -903,7 +903,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateKactusLogo() {
         const light = isLightMode();
-        const targetSrc = light ? 'img/kactusstudio2.png' : 'img/kactusstudio1.png';
+        const targetSrc = light ? '../img/kactusstudio2.png' : '../img/kactusstudio1.png';
         if (kactusLogo.getAttribute('src') !== targetSrc) {
             kactusLogo.src = targetSrc;
             console.log('[kactus] modo=' + (light ? 'LIGHT' : 'DARK') + ' → ' + targetSrc);
