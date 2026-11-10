@@ -91,6 +91,14 @@
       </svg>
       </button>
 
+      <script>
+      if (window.location.pathname.endsWith('.html')) {
+        // Substitui .html por nada no final da URL
+        var cleanUrl = window.location.pathname.replace('.html', '');
+        window.history.replaceState(null, '', cleanUrl);
+      }
+    </script>
+
 <!-- ==========================================
      1. CABEÇALHO / NAVBAR
      ========================================== -->
