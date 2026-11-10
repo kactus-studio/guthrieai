@@ -800,7 +800,7 @@ function toggleView(view) {
    </div>
 </section>
 
-<!-- PRICING (OTIMIZADO) -->
+<!-- PRICING -->
 <section id="pricing" class="sp position-relative py-5" style="background:var(--bg1)">
    <div class="aur aur-a" style="top:50%;left:50%;transform:translate(-50%,-50%)"></div>
    <div class="container position-relative" style="z-index:1">
@@ -818,11 +818,11 @@ function toggleView(view) {
 
       <!-- Toggle Mensal / Anual -->
       <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
-         <span id="monthly-label" style="color: var(--tx1); font-weight: 600;">Monthly</span>
+         <span id="monthly-label" style="color: var(--tx2); font-weight: normal;">Monthly</span>
          <div class="form-check form-switch" style="font-size: 1.5rem; cursor: pointer;">
-            <input class="form-check-input" type="checkbox" id="billing-toggle" style="cursor: pointer; background-color: #096838; border-color: #11b362;">
+            <input class="form-check-input" type="checkbox" id="billing-toggle" checked style="cursor: pointer; background-color: #096838; border-color: #11b362;">
          </div>
-         <span id="annual-label" style="color: var(--tx1);">Annual <span class="badge bg-success ms-1" style="font-size: 0.7rem;">Save 15%</span></span>
+         <span id="annual-label" style="color: var(--tx1); font-weight: bold;">Annual <span class="badge bg-success ms-1" style="font-size: 0.7rem;">SAVE 15%</span></span>
       </div>
       
       <!-- Cards -->
@@ -833,17 +833,22 @@ function toggleView(view) {
             <div class="pcard h-100 p-4 d-flex flex-column justify-content-between" style="border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: var(--bg2); color: var(--tx1); border: 1px solid var(--bd2);">APPRENTICE</span>
-                  <p class="mt-3 mb-2" style="color: var(--tx1); font-size: 0.85rem; min-height: 40px;">Self-serve Client who wants a pipeline manager to track bids.</p>
                   
-                  <div class="pamt mb-1 mt-4"><sup>$</sup><span class="price-val" data-monthly="195" data-annual="165">165</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
-                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 20px;" class="billing-cycle-text">billed annually</div>
+                  <!-- 1. PREÇO EM DESTAQUE -->
+                  <div class="pamt mt-4 mb-1"><sup>$</sup><span class="price-val" data-monthly="195" data-annual="165">165</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
+                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;" class="billing-cycle-text">billed annually</div>
+                  
+                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
+                  <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
+                     Perfect for self-serve teams needing a simple pipeline manager to track bids and access CRM features.
+                  </p>
                   
                   <hr style="border-color: var(--bd);">
                   
                   <ul class="list-unstyled mb-4 d-flex flex-column gap-2" style="color: var(--tx1); font-size: 0.85rem;">
                      <li><i class="fa-solid fa-check text-success me-2"></i> Full CRM Access</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> 30 min spec reports</li>
-                     <li class="mt-2 text-muted" style="font-size: 0.8rem;"><strong>Credits:</strong> None</li>
+                     <li><i class="fa-solid fa-times text-success me-2"></i> No credits</li>
                   </ul>
                </div>
                <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" target="_blank" rel="noopener noreferrer"><button class="boc btn w-100 py-2">Get Started</button></a>
@@ -855,10 +860,15 @@ function toggleView(view) {
             <div class="pcard h-100 p-4 d-flex flex-column justify-content-between" style="border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: var(--bg2); color: var(--tx1); border: 1px solid var(--bd2);">JOURNEYMAN</span>
-                  <p class="mt-3 mb-2" style="color: var(--tx1); font-size: 0.85rem; min-height: 40px;">Client who runs RFQs, bidform, and proposal for full jobs.</p>
                   
-                  <div class="pamt mb-1 mt-4"><sup>$</sup><span class="price-val" data-monthly="2125" data-annual="1995">1,995</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
-                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 20px;" class="billing-cycle-text">billed annually</div>
+                  <!-- 1. PREÇO EM DESTAQUE -->
+                  <div class="pamt mt-4 mb-1"><sup>$</sup><span class="price-val" data-monthly="2,125" data-annual="1,995">1,995</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
+                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;" class="billing-cycle-text">billed annually</div>
+                  
+                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
+                  <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
+                     Ideal for growing contractors ready to handle full jobs, including quantities, RFQs, bid forms, and proposals.
+                  </p>
                   
                   <hr style="border-color: var(--bd);">
                   
@@ -867,7 +877,7 @@ function toggleView(view) {
                      <li><i class="fa-solid fa-check text-success me-2"></i> Quantities & Parts List</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> RFQ Management</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> Bidform & Proposal</li>
-                     <li class="mt-2 text-muted" style="font-size: 0.8rem;"><strong>Credits:</strong> 10 / mo (2-4 jobs)</li>
+                     <li><i class="fa-solid fa-check text-success me-2"></i> 10 credits / mo (2-4 jobs)</li>
                   </ul>
                </div>
                <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" target="_blank" rel="noopener noreferrer"><button class="boc btn w-100 py-2">Get Started</button></a>
@@ -878,11 +888,16 @@ function toggleView(view) {
          <div class="col-lg-3 col-md-6">
             <div class="pcard pop h-100 p-4 d-flex flex-column justify-content-between" style="border: 2px solid #096838; border-radius: 20px;">
                <div>
-                  <span class="pbadge" style="background: #096838; color: white; width: 100%; text-align: center; border-radius: 8px; padding: 6px; font-size: 0.75rem; letter-spacing: 1px;"><i class="fa-solid fa-star me-1"></i>FULL BID PREPARATION</span>
-                  <p class="mt-3 mb-2" style="color: var(--tx1); font-size: 0.85rem; min-height: 40px;">Client who wants the full bid prepared end to end.</p>
+                  <span class="pbadge" style="background: #096838; color: white; width: 45%; text-align: center; border-radius: 16px; padding: 6px; font-size: 0.75rem; letter-spacing: 1px;"><i class="fa-solid fa-star me-1"></i>FOREMAN</span>
                   
-                  <div class="pamt mb-1 mt-4"><sup>$</sup><span class="price-val" data-monthly="4125" data-annual="3995">3,995</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
-                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 20px;" class="billing-cycle-text">billed annually</div>
+                  <!-- 1. PREÇO EM DESTAQUE -->
+                  <div class="pamt mt-4 mb-1"><sup>$</sup><span class="price-val" data-monthly="4,125" data-annual="3,995">3,995</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
+                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;" class="billing-cycle-text">billed annually</div>
+                  
+                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
+                  <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
+                     Our most popular plan. Get a dedicated Agent Manager for full end-to-end bid preparation.
+                  </p>
                   
                   <hr style="border-color: var(--bd);">
                   
@@ -890,7 +905,7 @@ function toggleView(view) {
                      <li><i class="fa-solid fa-check text-success me-2"></i> Everything in Journeyman</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> Dedicated Agent Manager</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> End-to-End Bid Prep</li>
-                     <li class="mt-2 text-muted" style="font-size: 0.8rem;"><strong>Credits:</strong> 40 / mo (8-14 jobs)</li>
+                     <li><i class="fa-solid fa-check text-success me-2"></i> 40 credits / mo (8-12 jobs)</li>
                   </ul>
                </div>
                <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" target="_blank" rel="noopener noreferrer"><button class="bgrd btn w-100 py-2">Get Started</button></a>
@@ -902,10 +917,15 @@ function toggleView(view) {
             <div class="pcard h-100 p-4 d-flex flex-column justify-content-between" style="border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: var(--bg2); color: var(--tx1); border: 1px solid var(--bd2);">SUPERINTENDENT</span>
-                  <p class="mt-3 mb-2" style="color: var(--tx1); font-size: 0.85rem; min-height: 40px;">Multi-office or high-volume Client.</p>
                   
-                  <div class="pamt mb-1 mt-4" style="font-size: 2rem; padding-top: 10px; padding-bottom: 15px;">Call us</div>
-                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 20px;">custom volume</div>
+                  <!-- 1. PREÇO EM DESTAQUE -->
+                  <div class="pamt mt-4 mb-1" style="font-size: 2.2rem; padding-top: 5px; padding-bottom: 5px;">Call us</div>
+                  <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;">custom volume</div>
+                  
+                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
+                  <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
+                     Built for multi-office or high-volume firms requiring custom integrations and dedicated scale.
+                  </p>
                   
                   <hr style="border-color: var(--bd);">
                   
@@ -913,7 +933,7 @@ function toggleView(view) {
                      <li><i class="fa-solid fa-check text-success me-2"></i> Everything in Foreman</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> Dedicated Multiple EAMs</li>
                      <li><i class="fa-solid fa-check text-success me-2"></i> Priority 24/7 support</li>
-                     <li class="mt-2 text-muted" style="font-size: 0.8rem;"><strong>Credits:</strong> Custom</li>
+                     <li><i class="fa-solid fa-check text-success me-2"></i> Custom credits</li>
                   </ul>
                </div>
                <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" target="_blank" rel="noopener noreferrer"><button class="boc btn w-100 py-2">Talk to Sales</button></a>
@@ -1067,44 +1087,53 @@ function toggleView(view) {
   </div>
 </section>
 
-<!-- Script para alternar valores mensais e anuais -->
+<!-- Script para garantir o carregamento no Anual -->
 <script>
-   const billingToggle = document.getElementById('billing-toggle');
-   const priceValues = document.querySelectorAll('.price-val');
-   const billingCycleTexts = document.querySelectorAll('.billing-cycle-text');
-   const monthlyLabel = document.getElementById('monthly-label');
-   const annualLabel = document.getElementById('annual-label');
+   document.addEventListener('DOMContentLoaded', function() {
+      const billingToggle = document.getElementById('billing-toggle');
+      const priceValues = document.querySelectorAll('.price-val');
+      const billingCycleTexts = document.querySelectorAll('.billing-cycle-text');
+      const monthlyLabel = document.getElementById('monthly-label');
+      const annualLabel = document.getElementById('annual-label');
 
-   function updatePricing() {
-      const isAnnual = billingToggle.checked;
-      
-      if (isAnnual) {
-         monthlyLabel.style.color = 'var(--tx2)';
-         annualLabel.style.color = 'var(--tx1)';
-         monthlyLabel.style.fontWeight = 'normal';
-         annualLabel.style.fontWeight = 'bold';
-      } else {
-         monthlyLabel.style.color = 'var(--tx1)';
-         annualLabel.style.color = 'var(--tx2)';
-         monthlyLabel.style.fontWeight = 'bold';
-         annualLabel.style.fontWeight = 'normal';
+      // Força o início no Anual
+      billingToggle.checked = true;
+
+      function updatePricing() {
+         const isAnnual = billingToggle.checked;
+         
+         // Atualiza as cores dos labels no topo
+         if (isAnnual) {
+            monthlyLabel.style.color = 'var(--tx2)';
+            annualLabel.style.color = 'var(--tx1)';
+            monthlyLabel.style.fontWeight = 'normal';
+            annualLabel.style.fontWeight = 'bold';
+         } else {
+            monthlyLabel.style.color = 'var(--tx1)';
+            annualLabel.style.color = 'var(--tx2)';
+            monthlyLabel.style.fontWeight = 'bold';
+            annualLabel.style.fontWeight = 'normal';
+         }
+
+         // Atualiza os valores nos cards
+         priceValues.forEach(el => {
+            const monthlyPrice = el.getAttribute('data-monthly');
+            const annualPrice = el.getAttribute('data-annual');
+            el.textContent = isAnnual ? annualPrice : monthlyPrice;
+         });
+
+         // Atualiza os textos abaixo dos valores
+         billingCycleTexts.forEach(el => {
+            el.textContent = isAnnual ? 'billed annually' : 'month-to-month';
+         });
       }
 
-      priceValues.forEach(el => {
-         const monthlyPrice = el.getAttribute('data-monthly');
-         const annualPrice = el.getAttribute('data-annual');
-         el.textContent = isAnnual ? annualPrice : monthlyPrice;
-      });
+      // Roda a função no carregamento da página
+      updatePricing();
 
-      billingCycleTexts.forEach(el => {
-         if (el.textContent.includes('billed monthly') || el.textContent.includes('billed annually')) {
-             el.textContent = isAnnual ? 'billed annually' : 'billed monthly';
-         }
-      });
-   }
-
-   billingToggle.addEventListener('change', updatePricing);
-   document.addEventListener('DOMContentLoaded', updatePricing);
+      // Escuta o clique para alternar entre Mensal e Anual
+      billingToggle.addEventListener('change', updatePricing);
+   });
 </script>
 
 <!-- TEAM SECTION -->
