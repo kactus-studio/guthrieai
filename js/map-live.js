@@ -188,22 +188,68 @@ async function renderPreciseMap() {
   }
 
   // =======================================================================
-  // NOVO: ATUALIZA O FOMO TICKER (Loading live infos)
+  // NOVO: FOMO TICKER INTELIGENTE E DINÂMICO
   // =======================================================================
   const fomoText = document.getElementById('fomo-dynamic-text');
   if (fomoText && projectsData.length > 0) {
     if (fomoInterval) clearInterval(fomoInterval);
+    
+    // 1. Extrair métricas para o FOMO
+    let topLocation = projectsData[0];
+    const uniqueLocations = new Set();
+    const stateCounts = {};
+
+    projectsData.forEach(p => {
+      // Encontra a cidade com mais projetos
+      if (p.count > topLocation.count) {
+        topLocation = p;
+      }
+      
+      // Agrupa por cidade única
+      uniqueLocations.add(p.location);
+      
+      // Agrupa por estado (ex: "Miami, FL" -> extrai o "FL")
+      const parts = p.location.split(',');
+      if (parts.length > 1) {
+        const state = parts[parts.length - 1].trim();
+        stateCounts[state] = (stateCounts[state] || 0) + p.count;
+      }
+    });
+
+    // Encontra o estado líder
+    let topState = '';
+    let topStateCount = 0;
+    for (const [state, count] of Object.entries(stateCounts)) {
+      if (count > topStateCount) {
+        topState = state;
+        topStateCount = count;
+      }
+    }
+
+    // 2. Monta o array de mensagens dinâmicas
+    const fomoMessages = [
+      `🔥 <strong style='color:#198754'>High Demand:</strong> ${escapeHtml(topLocation.location)} is leading with ${topLocation.count} active bids.`,
+      `📍 <strong style='color:#198754'>Network:</strong> Connecting ${uniqueLocations.size} active construction hubs across the country.`,
+      topState ? `⚡ <strong style='color:#198754'>Trend:</strong> Activity is surging in ${escapeHtml(topState)} with ${topStateCount} projects tracked.` : null,
+      `🚀 <strong style='color:#198754'>Live:</strong> A contractor in ${escapeHtml(projectsData[Math.floor(Math.random() * projectsData.length)].location)} just generated a new estimate.`,
+      `📈 <strong style='color:#198754'>Impact:</strong> Over ${formatTotal(grandTotalProjects)} bids managed nationwide through Guthrie AI.`
+    ].filter(Boolean); // Remove nulos (caso o estado não exista)
+
+    // 3. Lógica de rotação
     let fomoIdx = 0;
     
-    // Função que troca a mensagem
     const updateFomoText = () => {
-      const proj = projectsData[fomoIdx % projectsData.length];
-      fomoText.innerHTML = `Live tracking: <strong>${escapeHtml(proj.location)}</strong> — ${proj.count} active project(s) tracked in this area.`;
-      fomoIdx++;
+      fomoText.style.opacity = 0; // Efeito de fade out
+      
+      setTimeout(() => {
+        fomoText.innerHTML = fomoMessages[fomoIdx % fomoMessages.length];
+        fomoText.style.opacity = 1; // Efeito de fade in
+        fomoIdx++;
+      }, 300); // Tempo do fade
     };
 
     updateFomoText(); // Executa a primeira vez
-    fomoInterval = setInterval(updateFomoText, 4000); // Muda a cada 4 segundos
+    fomoInterval = setInterval(updateFomoText, 5000); // Muda a cada 5 segundos
   }
 
   // Camada SVG com linhas animadas
