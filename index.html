@@ -433,13 +433,13 @@
                         <div class="fomo-live-ticker" style="background: rgba(25, 135, 84, 0.06); border: 1px solid rgba(25, 135, 84, 0.2); border-radius: 6px; padding: 10px 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                            <div style="width: 8px; height: 8px; background-color: #096838; border-radius: 50%; box-shadow: 0 0 6px #f4f4f4; animation: fomo-pulse 1.5s infinite; flex-shrink: 0;"></div>
                            <div style="font-size: 0.8rem; color: var(--tx1);">
-                              <span id="fomo-dynamic-text" style="color: var(--tx1); font-weight: 500;">Loading live infos..</span>
+                              <!-- O texto abaixo agora é controlado pelo map-live.js -->
+                              <span id="fomo-dynamic-text" style="color: var(--tx1); font-weight: 500;">Syncing live network data...</span>
                            </div>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
                            <div class="me-4 text-center">
-                              <!-- ▼▼▼ MUDANÇA AQUI: placeholder em vez de hardcoded ▼▼▼ -->
                               <h4 id="total-projects-counter" class="mb-0" style="color: #096838; font-weight: 800;">—</h4>
                               <small style="color: var(--tx1);">Projects</small>
                            </div>
@@ -1404,71 +1404,6 @@ function toggleView(view) {
             }
          });
       });
-      </script>
-
-      <!-- ▼▼▼ NOVO: reforço do contador via endpoint leve (fallback) ▼▼▼ -->
-      <script>
-      (function () {
-        // Ajuste se mudar de host
-        const BRIDGE_BASE = 'https://guthrie-api-bridge-production.up.railway.app';
-        const COUNTER_URL = `${BRIDGE_BASE}/api/guthrie-projects/count`;
-        const REFRESH_MS = 60 * 1000;
-
-        function formatTotal(n) {
-          if (!Number.isFinite(n) || n <= 0) return '—';
-          return n >= 1000
-            ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k+'
-            : n + '+';
-        }
-
-        function setCounter(val, title) {
-          const el = document.getElementById('total-projects-counter');
-          if (!el) return;
-          el.textContent = val;
-          if (title) el.setAttribute('title', title);
-        }
-
-        // Escuta o map-live.js — quando ele termina, já temos o total exato
-        document.addEventListener('guthrieMapDataReady', (e) => {
-          if (e.detail && typeof e.detail.total === 'number') {
-            setCounter(formatTotal(e.detail.total), `Total projects: ${e.detail.total}`);
-          }
-        });
-
-        // Fallback: consulta o endpoint leve (caso o mapa falhe por algum motivo)
-        async function refreshCounter() {
-          try {
-            const res = await fetch(
-              `${COUNTER_URL}${COUNTER_URL.includes('?') ? '&' : '?'}_ts=${Date.now()}`,
-              { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } }
-            );
-            if (!res.ok) return;
-            const data = await res.json();
-            if (typeof data.total === 'number') {
-              setCounter(formatTotal(data.total), `Total projects: ${data.total}`);
-            }
-          } catch (err) {
-            console.warn('[counter] fallback fetch failed:', err.message);
-          }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-          // Só roda fallback se o mapa não entregou em 5s (ex: bloqueio de CORS, JS quebrado)
-          setTimeout(() => {
-            const el = document.getElementById('total-projects-counter');
-            if (el && (el.textContent === '—' || !el.textContent.trim())) {
-              refreshCounter();
-            }
-          }, 5000);
-
-          // Reforço: a cada 60s
-          setInterval(refreshCounter, REFRESH_MS);
-
-          document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) refreshCounter();
-          });
-        });
-      })();
       </script>
     </body>
 </html>
