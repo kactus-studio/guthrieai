@@ -1405,5 +1405,250 @@ function toggleView(view) {
          });
       });
       </script>
+      <script>
+  /* ===== Lógica precisa da Calculadora de ROI baseada em Planilha ===== */
+  const ROI_DEFAULTS = {
+    HOURS_PER_FTE_MONTH: 40 * 4,  // 160
+    TIME_SAVINGS_FACTOR: 0.5,
+    GROSS_MARGIN: 0.20,
+    WIN_RATE_UPLIFT: 0.05,        // Ajustado para 0.05 (5%) para refletir o ganho real e atingir os 10x de ROI
+    VBA_MONTHLY_COST: 4125
+  };
+
+  // Motor da calculadora. Retorna valores arredondados para cima (Math.ceil).
+  function runRoiMath(inp) {
+    const cfg = ROI_DEFAULTS;
+
+    // Campos obrigatórios com fallback caso venham vazios
+    const estimators     = Math.max(0, Number(inp.estimators) || 3);
+    const quotesPerMonth = Math.max(0, Number(inp.quotesPerMonth) || 30);
+    const avgQuoteValue  = Math.max(0, Number(inp.avgQuoteValue) || 137500);
+    const hoursPerQuote  = Math.max(1e-6, Number(inp.hoursPerQuote) || 12);
+
+    // Campos opcionais com valores padrão
+    const winRate = (inp.winRate !== "" && inp.winRate != null)
+      ? Math.min(1, Math.max(0, Number(inp.winRate) / 100))
+      : 0.25;
+    const vbas = (inp.vbas !== "" && inp.vbas != null) ? Math.max(0, Number(inp.vbas)) : 1;
+
+    // Baseline capacity
+    const totalEstimatorHrs = estimators * cfg.HOURS_PER_FTE_MONTH;
+    const quotesCompletedBaseline = Math.min(totalEstimatorHrs / hoursPerQuote, quotesPerMonth);
+
+    // Com GuthrieAI
+    const totalVbaHrs = vbas * cfg.HOURS_PER_FTE_MONTH;
+    const quotesHandledByVba = totalVbaHrs / hoursPerQuote;
+    const timeSavedPerEstimatorQuote = hoursPerQuote * cfg.TIME_SAVINGS_FACTOR;
+
+    const totalEstimatorHrsWithSavings = (estimators * cfg.HOURS_PER_FTE_MONTH) - (quotesHandledByVba * timeSavedPerEstimatorQuote);
+    const estimatorQuotesWithSavings   = totalEstimatorHrsWithSavings / hoursPerQuote;
+
+    const quotesCompletedWithGuthrie = Math.min(quotesHandledByVba + estimatorQuotesWithSavings, quotesPerMonth);
+
+    // Ganhos & Lucros
+    const winRateWithGuthrie = winRate + cfg.WIN_RATE_UPLIFT;
+    const quotesWonBaseline  = winRate * quotesCompletedBaseline;
+    const quotesWonGuthrie   = winRateWithGuthrie * quotesCompletedWithGuthrie;
+
+    const additionalQuotesWon    = quotesWonGuthrie - quotesWonBaseline;
+    const additionalRevenue      = (quotesWonGuthrie - quotesWonBaseline) * avgQuoteValue;
+    const additionalGrossProfit  = additionalRevenue * cfg.GROSS_MARGIN;
+    const additionalCost         = cfg.VBA_MONTHLY_COST * vbas;
+    const roiMultiple            = additionalCost === 0 ? 0 : (additionalGrossProfit / additionalCost);
+
+    return {
+      quotes: Math.ceil(additionalQuotesWon),
+      profit: Math.ceil(additionalGrossProfit),
+      cost:   Math.ceil(additionalCost),
+      roi:    Math.ceil(roiMultiple)
+    };
+  }
+
+  // Monitora o carregamento da página para gerenciar o formulário integrado
+  document.addEventListener('DOMContentLoaded', function() {
+    const roiForm = document.getElementById('roiForm');
+    
+    if (roiForm) {
+      roiForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Captura os valores atuais ou assume o padrão inserido se o usuário limpou o campo
+        const estimators = document.getElementById('estimators').value || "3";
+        const qpm        = document.getElementById('quotesPerMonth').value || "30";
+        const aqv        = document.getElementById('avgQuoteValue').value || "137500";
+        const hpq        = document.getElementById('hoursPerQuote').value || "12";
+        const winRate    = document.getElementById('winRate').value || "25";
+        const vbas       = document.getElementById('vbas').value || "1";
+
+        // Processa os dados usando as regras de negócio atualizadas
+        const results = runRoiMath({
+          estimators,
+          quotesPerMonth: qpm,
+          avgQuoteValue:  aqv,
+          hoursPerQuote:  hpq,
+          winRate:        winRate,
+          vbas:           vbas
+        });
+
+        // Atualiza a interface com formatação correta de moedas (Ex: 15,000)
+        document.getElementById('outQuotes').textContent = results.quotes.toString();
+        document.getElementById('outProfit').textContent = results.profit.toLocaleString('en-US');
+        document.getElementById('outCost').textContent   = results.cost.toLocaleString('en-US');
+        document.getElementById('outRoi').textContent    = results.roi + 'x';
+
+        // Guarda a URL atual para tracking/retorno caso necessário
+        try { sessionStorage.setItem('roiReturnUrl', window.location.href); } catch (err) {}
+
+        // Alterna para os resultados
+        showOutputs();
+      });
+    }
+  });
+
+// Chame esta função dentro do seu DOMContentLoaded ou logo após carregar o mapa
+document.addEventListener('DOMContentLoaded', () => {
+  initFomoTicker();
+});
+
+  /* ===== Alternância de Telas Integradas (Inline) ===== */
+  function showInputs() {
+    document.getElementById('roiInputsScreen').style.display = 'block';
+    document.getElementById('roiOutputsScreen').style.display = 'none';
+  }
+
+  function showOutputs() {
+    document.getElementById('roiInputsScreen').style.display = 'none';
+    document.getElementById('roiOutputsScreen').style.display = 'block';
+  }
+</script>
+            <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      const backToTopBtn = document.getElementById("backToTop");
+
+      // Monitora a rolagem da página
+      window.addEventListener("scroll", function () {
+         // Se rolar mais de 300px para baixo, mostra o botão, senão esconde
+         if (window.scrollY > 300) {
+            backToTopBtn.classList.add("show");
+         } else {
+            backToTopBtn.classList.remove("show");
+         }
+      });
+
+      // Ação de clique para subir de forma suave (Smooth Scroll)
+      backToTopBtn.addEventListener("click", function () {
+         window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+         });
+      });
+      });
+      </script>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+  new Swiper('.testimonials-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      }
+    }
+  });
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Guthrie AI",
+  "operatingSystem": "Web, Cloud",
+  "applicationCategory": "BusinessApplication",
+  "description": "AI-powered preconstruction support platform combining AI Apprentice (AI) and human Bid Coordinators to automate RFPs, manage RFIs, and streamline commercial construction estimating.",
+  "url": "https://www.guthrieai.com",
+  "author": {
+    "@type": "Organization",
+    "name": "Guthrie AI"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "price": "Contact for pricing",
+    "availability": "https://schema.org/OnlineOnly"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Commercial Construction Contractors, Subcontractors, Estimators, Preconstruction Managers"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  }
+}
+</script>
+      <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const kactusLogo = document.getElementById('kactus-logo-img');
+    if (!kactusLogo) {
+        console.warn('[kactus] Elemento #kactus-logo-img não encontrado.');
+        return;
+    }
+
+    // Verifica .lm em QUALQUER um dos elementos possíveis
+    function isLightMode() {
+        const htmlRoot = document.getElementById('htmlRoot');
+        return (
+            document.documentElement.classList.contains('lm') ||
+            document.body.classList.contains('lm') ||
+            (htmlRoot && htmlRoot.classList.contains('lm'))
+        );
+    }
+
+    function updateKactusLogo() {
+        const light = isLightMode();
+        const targetSrc = light ? 'img/kactusstudio2.png' : 'img/kactusstudio1.png';
+        if (kactusLogo.getAttribute('src') !== targetSrc) {
+            kactusLogo.src = targetSrc;
+            console.log('[kactus] modo=' + (light ? 'LIGHT' : 'DARK') + ' → ' + targetSrc);
+        }
+    }
+
+    // 1. Roda na carga inicial
+    updateKactusLogo();
+
+    // 2. Observa mudanças de classe em html, body e #htmlRoot
+    const observer = new MutationObserver(updateKactusLogo);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    const htmlRoot = document.getElementById('htmlRoot');
+    if (htmlRoot) {
+        observer.observe(htmlRoot, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // 3. Fallback extra: também atualiza após cliques nos botões de tema
+    document.querySelectorAll('#thbtn, .theme-mobile-btn').forEach(btn => {
+        btn.addEventListener('click', () => setTimeout(updateKactusLogo, 60));
+    });
+});
+</script>
     </body>
 </html>
