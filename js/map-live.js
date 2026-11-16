@@ -188,35 +188,32 @@ async function renderPreciseMap() {
   }
 
   // =======================================================================
-  // NOVO: FOMO TICKER INTELIGENTE E DINÂMICO
+  // FOMO TICKER AVANÇADO (Extraindo o máximo de dados da API)
   // =======================================================================
   const fomoText = document.getElementById('fomo-dynamic-text');
   if (fomoText && projectsData.length > 0) {
     if (fomoInterval) clearInterval(fomoInterval);
     
-    // 1. Extrair métricas para o FOMO
-    let topLocation = projectsData[0];
+    // 1. Ordena para pegar os Top 3
+    const sortedProjects = [...projectsData].sort((a, b) => b.count - a.count);
+    const top3Cities = sortedProjects.slice(0, 3).map(p => p.location.split(',')[0]).join(', ');
+    const topCity = sortedProjects[0];
+    
+    // 2. Analisa estados únicos e o estado líder
     const uniqueLocations = new Set();
+    const uniqueStates = new Set();
     const stateCounts = {};
 
     projectsData.forEach(p => {
-      // Encontra a cidade com mais projetos
-      if (p.count > topLocation.count) {
-        topLocation = p;
-      }
-      
-      // Agrupa por cidade única
       uniqueLocations.add(p.location);
-      
-      // Agrupa por estado (ex: "Miami, FL" -> extrai o "FL")
       const parts = p.location.split(',');
       if (parts.length > 1) {
         const state = parts[parts.length - 1].trim();
+        uniqueStates.add(state);
         stateCounts[state] = (stateCounts[state] || 0) + p.count;
       }
     });
-
-    // Encontra o estado líder
+    
     let topState = '';
     let topStateCount = 0;
     for (const [state, count] of Object.entries(stateCounts)) {
@@ -226,30 +223,36 @@ async function renderPreciseMap() {
       }
     }
 
-    // 2. Monta o array de mensagens dinâmicas
-    const fomoMessages = [
-      `🔥 <strong style='color:#198754'>High Demand:</strong> ${escapeHtml(topLocation.location)} is leading with ${topLocation.count} active bids.`,
-      `📍 <strong style='color:#198754'>Network:</strong> Connecting ${uniqueLocations.size} active construction hubs across the country.`,
-      topState ? `⚡ <strong style='color:#198754'>Trend:</strong> Activity is surging in ${escapeHtml(topState)} with ${topStateCount} projects tracked.` : null,
-      `🚀 <strong style='color:#198754'>Live:</strong> A contractor in ${escapeHtml(projectsData[Math.floor(Math.random() * projectsData.length)].location)} just generated a new estimate.`,
-      `📈 <strong style='color:#198754'>Impact:</strong> Over ${formatTotal(grandTotalProjects)} bids managed nationwide through Guthrie AI.`
-    ].filter(Boolean); // Remove nulos (caso o estado não exista)
+    // 3. Média de projetos por cidade
+    const avgPerCity = (grandTotalProjects / uniqueLocations.size).toFixed(1);
 
-    // 3. Lógica de rotação
+    // 4. Cidade aleatória para simular ação ao vivo
+    const randomLocation = projectsData[Math.floor(Math.random() * projectsData.length)].location.split(',')[0];
+
+    // 5. Monta o array com todas as mensagens
+    const fomoMessages = [
+      `🔥 <strong style='color:#198754'>Hotspots:</strong> ${escapeHtml(top3Cities)} are leading the nation in active bids.`,
+      `📍 <strong style='color:#198754'>National Reach:</strong> Contractors are actively bidding across ${uniqueStates.size} states.`,
+      topState ? `⚡ <strong style='color:#198754'>Trend:</strong> ${escapeHtml(topState)} is surging with ${topStateCount} active projects tracked.` : null,
+      `🚀 <strong style='color:#198754'>Live Action:</strong> A contractor in ${escapeHtml(randomLocation)} just started a new estimate.`,
+      `📈 <strong style='color:#198754'>Volume:</strong> An average of ${avgPerCity} bids are being managed per region right now.`,
+      `🏆 <strong style='color:#198754'>Market Leader:</strong> ${escapeHtml(topCity.location)} currently dominates with ${topCity.count} active projects.`
+    ].filter(Boolean); // Remove o 'null' caso não existam estados
+
+    // 6. Lógica de rotação com Fade
     let fomoIdx = 0;
-    
     const updateFomoText = () => {
-      fomoText.style.opacity = 0; // Efeito de fade out
+      fomoText.style.opacity = 0; // Fade out
       
       setTimeout(() => {
         fomoText.innerHTML = fomoMessages[fomoIdx % fomoMessages.length];
-        fomoText.style.opacity = 1; // Efeito de fade in
+        fomoText.style.opacity = 1; // Fade in
         fomoIdx++;
-      }, 300); // Tempo do fade
+      }, 300);
     };
 
-    updateFomoText(); // Executa a primeira vez
-    fomoInterval = setInterval(updateFomoText, 5000); // Muda a cada 5 segundos
+    updateFomoText(); // Primeira execução
+    fomoInterval = setInterval(updateFomoText, 7000); // Alterna a cada 7 segundos
   }
 
   // Camada SVG com linhas animadas
