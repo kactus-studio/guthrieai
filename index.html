@@ -1313,11 +1313,10 @@
                   <div class="col-lg-7">
                      <div class="p-4 p-md-5" style="background: var(--bg3); border-radius: 20px; border: 1px solid #096838; box-shadow: 0 10px 30px rgba(9,104,56,0.1);">
                         <h4 style="color: var(--tx1); font-weight: 700; margin-bottom: 1.5rem;">Send us a message</h4>
+                        
+                        <!-- Ação mantida a sua do form-to-email -->
                         <form id="contactForm" action="https://www.form-to-email.com/api/s/EEPg5YSZnJtX" method="POST">
-                              <input type="hidden" name="_captcha" value="true">
-                              <input type="hidden" name="_next" value="https://www.guthrieai.com/">
-                              <input type="hidden" name="_subject" value="New Contact from Guthrie AI">
-
+                              
                               <div class="row g-3">
                                  <div class="col-md-6">
                                     <label for="contactName" class="form-label small fw-semibold" style="color: var(--tx1);">Name *</label>
@@ -1342,6 +1341,29 @@
                         </form>
                      </div>
                   </div>
+
+                  <script>
+                     document.addEventListener('DOMContentLoaded', function() {
+                        const form = document.getElementById('contactForm');
+                        if (form) {
+                              form.addEventListener('submit', function(e) {
+                                 // Não usamos e.preventDefault() aqui. O formulário vai enviar nativamente.
+                                 
+                                 // Pega os valores digitados
+                                 const name = document.getElementById('contactName').value;
+                                 const email = document.getElementById('contactEmail').value;
+                                 const company = document.getElementById('contactCompany').value || 'N/A';
+                                 const message = document.getElementById('contactMessage').value;
+
+                                 // Junta tudo em um único bloco de texto para forçar a aparecer no e-mail
+                                 const combinedMessage = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`;
+                                 
+                                 // Substitui o texto da caixa de mensagem por esse bloco completo
+                                 document.getElementById('contactMessage').value = combinedMessage;
+                              });
+                        }
+                     });
+                  </script>
 
                </div>
             </div>
