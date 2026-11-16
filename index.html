@@ -9,7 +9,6 @@
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
       <link rel="canonical" href="https://www.guthrieai.com/">
 
-      <!-- Open Graph / Social Meta Tags (Crucial para o mercado americano B2B) -->
       <meta property="og:locale" content="en_US">
       <meta property="og:type" content="website">
       <meta property="og:title" content="Guthrie AI | AI-Powered Preconstruction & Bid Management Software">
@@ -18,7 +17,6 @@
       <meta property="og:site_name" content="Guthrie AI">
       <meta property="og:image" content="https://www.guthrieai.com/img/apple-touch-icon1.png">
 
-      <!-- Twitter Card Data -->
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Guthrie AI | AI-Powered Preconstruction & Bid Management Software">
       <meta name="twitter:description" content="Streamline your preconstruction and bidding workflow with AI-powered virtual bid assistants. Automate RFPs, manage RFIs, and win more commercial projects.">
@@ -82,7 +80,6 @@
 
       <script>
       if (window.location.pathname.endsWith('.html')) {
-        // Substitui .html por nada no final da URL
         var cleanUrl = window.location.pathname.replace('.html', '');
         window.history.replaceState(null, '', cleanUrl);
       }
@@ -105,10 +102,9 @@
                      <a href="#integrations" class="nav-link">Integrations</a>
                      <a href="#pricing" class="nav-link">Pricing</a>
                      <a href="testimonials.html" class="nav-link">Client Testimonials</a>
-                     <!-- <a href="#contact" class="nav-link">Contact</a> -->
                   </div>
                   
-                  <div class="d-flex align-items-center gap-2 flex-shrink: 0;">
+                  <div class="d-flex align-items-center gap-2 flex-shrink-0;">
                      <button class="boc d-flex align-items-center justify-content-center" id="thbtn" style="width:36px; height:36px; padding:0; border-radius:12px;" aria-label="Toggle theme">
                         <i class="fa-solid fa-sun" id="suni" style="display:none"></i>
                         <i class="fa-solid fa-moon" id="mooni"></i>
@@ -258,7 +254,6 @@
 
                <div class="row g-4 justify-content-center">
                   
-                  <!-- COLUNA 1: CLIENT -->
                   <div class="col-lg-4 col-md-6">
                      <div class="gc p-4 h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; border-top: 4px solid #0f5132;">
                         <div class="d-flex align-items-center gap-3 mb-4 border-bottom border-secondary border-opacity-25 pb-3">
@@ -292,7 +287,6 @@
                      </div>
                   </div>
 
-                  <!-- COLUNA 2: VBA -->
                   <div class="col-lg-4 col-md-6">
                      <div class="gc p-4 h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; border-top: 4px solid #096838;">
                         <div class="d-flex align-items-center gap-3 mb-4 border-bottom border-secondary border-opacity-25 pb-3">
@@ -314,7 +308,6 @@
                      </div>
                   </div>
 
-                  <!-- COLUNA 3: AI -->
                   <div class="col-lg-4 col-md-6">
                      <div class="gc p-4 h-100" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; border-top: 4px solid #198754;">
                         <div class="d-flex align-items-center gap-3 mb-4 border-bottom border-secondary border-opacity-25 pb-3">
@@ -422,7 +415,6 @@
             <div class="container">
                <div class="row align-items-center">
                   
-                  <!-- Coluna Esquerda: Mapa -->
                   <div class="col-lg-7">
                      <h2 class="stitle" style="font-weight: 700; margin-bottom: 30px;">Nationwide Impact</h2>
                      <div class="map-wrapper" style="position: relative; width: 100%;">
@@ -430,7 +422,6 @@
                      </div>
                   </div>
                   
-                  <!-- Coluna Direita: Informações e Métricas -->
                   <div class="col-lg-5">
                      <div class="ps-lg-5">
                         <span class="slbl" style="color: #096838; font-weight: 600;">Growing Footprint</span>
@@ -439,7 +430,6 @@
                            From coastal infrastructure to inland commercial development, Guthrie AI is standardizing the bidding process for leading contractors nationwide. Our footprint is expanding rapidly as more firms realize the competitive advantage of AI-driven estimation.
                         </p>
 
-                        <!-- Bloco de FOMO integrado preservando a identidade visual -->
                         <div class="fomo-live-ticker" style="background: rgba(25, 135, 84, 0.06); border: 1px solid rgba(25, 135, 84, 0.2); border-radius: 6px; padding: 10px 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                            <div style="width: 8px; height: 8px; background-color: #096838; border-radius: 50%; box-shadow: 0 0 6px #f4f4f4; animation: fomo-pulse 1.5s infinite; flex-shrink: 0;"></div>
                            <div style="font-size: 0.8rem; color: var(--tx1);">
@@ -449,7 +439,8 @@
 
                         <div class="d-flex align-items-center mt-4">
                            <div class="me-4 text-center">
-                              <h4 id="total-projects-counter" class="mb-0" style="color: #096838; font-weight: 800;">5.5k+</h4>
+                              <!-- ▼▼▼ MUDANÇA AQUI: placeholder em vez de hardcoded ▼▼▼ -->
+                              <h4 id="total-projects-counter" class="mb-0" style="color: #096838; font-weight: 800;">—</h4>
                               <small style="color: var(--tx1);">Projects</small>
                            </div>
                            <div class="text-center">
@@ -583,7 +574,6 @@
   <div class="container">
     <div class="row justify-content-center gy-4">
       
-      <!-- LADO ESQUERDO: Gráfico de Comparação de Custos -->
       <div class="col-lg-6">
         <div class="roi-comparison-box p-4 h-100 d-flex flex-column justify-content-between" style="border: 1px solid var(--bs-border-color, #e3f2fd); border-radius: 20px; background-color: var(--bs-body-bg, #fff); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
           
@@ -619,11 +609,9 @@
         </div>
       </div>
 
-<!-- LADO DIREITO: Calculadora de ROI Interativa Integrada -->
 <div class="col-lg-6">
   <div class="roi-calculator-box p-4 h-100 d-flex flex-column justify-content-center" style="border: 1px solid var(--bs-border-color, #e3f2fd); border-radius: 20px; background-color: var(--bs-body-bg, #fff); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
     
-    <!-- TELA 1: Formulário de Inputs -->
     <div id="roiInputsScreen">
       <div class="text-center mb-4">
         <h4 class="fw-bold m-0" style="color: #000; font-size: 22px;">Calculate your ROI</h4>
@@ -669,7 +657,6 @@
       </form>
     </div>
 
-          <!-- TELA 2: Resultados da Simulação (Oculta por padrão) -->
           <div id="roiOutputsScreen" style="display: none;">
             <div class="text-center mb-4">
               <div class="text-success mb-2" style="font-size: 2rem;"><i class="bi bi-graph-up-arrow"></i></div>
@@ -743,7 +730,6 @@
             </div>
             
             <div class="dgrid">
-                <!-- Sidebar com Imagem de Perfil e Menu -->
                 <div class="dside" style="min-width: 200px; padding: 15px;">
                     <div style="text-align: center; margin-bottom: 15px;">
                         <img src="img/menu/guthrieai_assistant.png" alt="GuthrieAI Apprentice" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
@@ -754,10 +740,8 @@
                     <button class="dsi" style="color: var(--tx1); border:none; background:transparent; display:block; padding: 10px;"><i class="fa-solid fa-bolt"></i> Integrations</button>
                 </div>
 
-                <!-- Conteúdo Dinâmico -->
                 <div class="p-3" id="content-container" style="width: 100%;">
                     
-                    <!-- Integrations -->
                     <div id="content-integrations" style="display: block;">
                         <div class="row g-3 justify-content-center">
                             <div class="col-12 col-md-6 col-lg-5"><div class="gc p-4 text-center h-100"><div style="width:52px;height:52px;border-radius:14px;background:#096838;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><i class="fa-solid fa-screwdriver-wrench fa-xl" style="color:#f4f4f4"></i></div><div class="fw-semibold mb-1" style="color:var(--tx2)">Building Connected</div><div style="font-size:.78rem;color:var(--tx1);margin-bottom:8px">Sync project data, drawings, and RFI workflows seamlessly</div></div></div>
@@ -800,7 +784,7 @@ function toggleView(view) {
                      <div style="width: 17px; height: 17px; background-color: var(--tx2); -webkit-mask: url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlegemini.svg') no-repeat center; mask: url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlegemini.svg') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>
                   </a>
                   <a target="_blank" href="https://grok.com/?q=I+want+to+understand+how+Guthrie+AI+helps+contractors+modernize+preconstruction+workflows+using+Virtual+Bid+Assistants.+Summarize+what+Guthrie+AI+does%2C+their+approach+to+centralizing+RFP+information%2C+and+how+they+structure+estimation+workflows+to+meet+RFI+deadlines+and+generate+proposals.+Use+information+on+their+website+https%3A%2F%2Fwww.guthrieai.com" class="sico d-inline-flex align-items-center justify-content-center" style="width: 38px; height: 38px; padding: 0;" title="Grok">
-                     <div style="width: 17px; height: 17px; background-color: var(--tx2); -webkit-mask: url('https://cdn.jsdelivr.net/homarr-labs/dashboard-icons/svg/grok.svg') no-repeat center; mask: url('https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grok.svg') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>
+                     <div style="width: 17px; height: 17px; background-color: var(--tx2); -webkit-mask: url('https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grok.svg') no-repeat center; mask: url('https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grok.svg') no-repeat center; -webkit-mask-size: contain; mask-size: contain;"></div>
                   </a>
                </div>
          </div>
@@ -813,7 +797,6 @@ function toggleView(view) {
    <div class="aur aur-a" style="top:50%;left:50%;transform:translate(-50%,-50%)"></div>
    <div class="container position-relative" style="z-index:1">
       
-      <!-- Top Section: Header -->
       <div class="row justify-content-center mb-5">
          <div class="col-lg-8 text-center">
             <span class="slbl">Pricing</span>
@@ -824,7 +807,6 @@ function toggleView(view) {
          </div>
       </div>
 
-      <!-- Toggle Mensal / Anual -->
       <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
          <span id="monthly-label" style="color: var(--tx2); font-weight: normal;">Monthly</span>
          <div class="form-check form-switch" style="font-size: 1.5rem; cursor: pointer;">
@@ -833,20 +815,16 @@ function toggleView(view) {
          <span id="annual-label" style="color: var(--tx1); font-weight: bold;">Annual <span class="badge bg-success ms-1" style="font-size: 0.7rem;">SAVE 15%</span></span>
       </div>
       
-      <!-- Cards -->
       <div class="row g-4 justify-content-center mb-4">
          
-         <!-- TIER 1: Apprentice -->
          <div class="col-lg-3 col-md-6">
             <div class="pcard h-100 p-4 d-flex flex-column justify-content-between" style="border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: var(--bg2); color: var(--tx1); border: 1px solid var(--bd2);">APPRENTICE</span>
                   
-                  <!-- 1. PREÇO EM DESTAQUE -->
                   <div class="pamt mt-4 mb-1"><sup>$</sup><span class="price-val" data-monthly="195" data-annual="165">165</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
                   <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;" class="billing-cycle-text">with annual agreement</div>
                   
-                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
                   <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
                      Perfect for self-serve teams needing a simple pipeline manager to track bids and access CRM features.
                   </p>
@@ -863,17 +841,14 @@ function toggleView(view) {
             </div>
          </div>
 
-         <!-- TIER 2: Journeyman -->
          <div class="col-lg-3 col-md-6">
             <div class="pcard h-100 p-4 d-flex flex-column justify-content-between" style="border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: var(--bg2); color: var(--tx1); border: 1px solid var(--bd2);">JOURNEYMAN</span>
                   
-                  <!-- 1. PREÇO EM DESTAQUE -->
                   <div class="pamt mt-4 mb-1"><sup>$</sup><span class="price-val" data-monthly="2,125" data-annual="1,995">1,995</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
                   <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;" class="billing-cycle-text">with annual agreement</div>
                   
-                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
                   <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
                      Ideal for growing contractors ready to handle full jobs, including quantities, RFQs, bid forms, and proposals.
                   </p>
@@ -892,17 +867,14 @@ function toggleView(view) {
             </div>
          </div>
 
-         <!-- TIER 3: Foreman (Highlighted) -->
          <div class="col-lg-3 col-md-6">
             <div class="pcard pop h-100 p-4 d-flex flex-column justify-content-between" style="border: 2px solid #096838; border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: #096838; color: white; width: 45%; text-align: center; border-radius: 16px; padding: 6px; font-size: 0.75rem; letter-spacing: 1px;"><i class="fa-solid fa-star me-1"></i>FOREMAN</span>
                   
-                  <!-- 1. PREÇO EM DESTAQUE -->
                   <div class="pamt mt-4 mb-1"><sup>$</sup><span class="price-val" data-monthly="4,125" data-annual="3,995">3,995</span><span style="font-size: 1rem; font-weight: 500;"> / mo</span></div>
                   <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;" class="billing-cycle-text">with annual agreement</div>
                   
-                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
                   <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
                      Our most popular plan. Get a dedicated Agent Manager for full end-to-end bid preparation.
                   </p>
@@ -920,17 +892,14 @@ function toggleView(view) {
             </div>
          </div>
 
-         <!-- TIER 4: Superintendent -->
          <div class="col-lg-3 col-md-6">
             <div class="pcard h-100 p-4 d-flex flex-column justify-content-between" style="border-radius: 20px;">
                <div>
                   <span class="pbadge" style="background: var(--bg2); color: var(--tx1); border: 1px solid var(--bd2);">SUPERINTENDENT</span>
                   
-                  <!-- 1. PREÇO EM DESTAQUE -->
                   <div class="pamt mt-4 mb-1" style="font-size: 2.2rem; padding-top: 5px; padding-bottom: 5px;">Call us</div>
                   <div style="font-size:.85rem; color:var(--tx2); margin-bottom: 15px;">custom volume</div>
                   
-                  <!-- 2. DESCRIÇÃO EMBAIXO DO PREÇO -->
                   <p style="color: var(--tx1); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; min-height: 65px;">
                      Built for multi-office or high-volume firms requiring custom integrations and dedicated scale.
                   </p>
@@ -957,15 +926,11 @@ function toggleView(view) {
    </div>
 </section>
 
-<!-- =========================================
-     TABELA DE RECURSOS DO PRICING
-     ========================================= -->
 <section id="pricing-features" class="py-5" style="background:var(--bg1)">
   <div class="container">
     
     <h3 class="fw-bold mb-4" style="color: var(--tx1);">What's included</h3>
     
-    <!-- Responsive Table -->
     <div class="table-responsive mb-4">
       <table class="table table-bordered align-middle" style="border-color: rgba(150, 150, 150, 0.2);">
         <thead>
@@ -973,14 +938,12 @@ function toggleView(view) {
             <th class="text-uppercase" style="width: 30%; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--tx1); background: transparent; border-color: rgba(150, 150, 150, 0.2);">MODULE</th>
             <th class="text-center text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em; color: var(--tx1); background: transparent; border-color: rgba(150, 150, 150, 0.2);">APPRENTICE</th>
             <th class="text-center text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em; color: var(--tx1); background: transparent; border-color: rgba(150, 150, 150, 0.2);">JOURNEYMAN</th>
-            <!-- Highlight Foreman Column Header -->
             <th class="text-center text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em; color: #198754; background: rgba(25, 135, 84, 0.05); border-color: rgba(150, 150, 150, 0.2); border-bottom: 3px solid #198754;">FOREMAN</th>
             <th class="text-center text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em; color: var(--tx1); background: transparent; border-color: rgba(150, 150, 150, 0.2);">SUPERINTENDENT</th>
           </tr>
         </thead>
         <tbody style="color: var(--tx1); font-size: 0.95rem;">
           
-          <!-- Row 1: BMS -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">Bid Management System (BMS)</div>
@@ -992,7 +955,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 2: 30-min Report -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">30-minute Project Report</div>
@@ -1004,7 +966,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 3: AI Apprentice -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">AI Apprentice</div>
@@ -1016,7 +977,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 4: EAM -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">Estimating Agent Manager (EAM)</div>
@@ -1028,7 +988,6 @@ function toggleView(view) {
             <td class="text-center fw-semibold" style="background: transparent; border-color: rgba(150, 150, 150, 0.2); color: var(--tx1);">Dedicated<br>Multiple</td>
           </tr>
 
-          <!-- Row 5: Quantity Takeoff Reports -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">Quantity Takeoff Reports</div>
@@ -1040,7 +999,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 6: Parts List -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">Parts List</div>
@@ -1052,7 +1010,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 7: RFQ Management -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">RFQ Management</div>
@@ -1064,7 +1021,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 8: Bidform -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">Bidform</div>
@@ -1076,7 +1032,6 @@ function toggleView(view) {
             <td class="text-center" style="background: transparent; border-color: rgba(150, 150, 150, 0.2);"><i class="fa-solid fa-check fs-5" style="color: #198754;"></i></td>
           </tr>
 
-          <!-- Row 9: Proposal -->
           <tr>
             <td style="background: transparent; border-color: rgba(150, 150, 150, 0.2);">
               <div class="fw-bold" style="color: var(--tx2);">Proposal</div>
@@ -1095,7 +1050,6 @@ function toggleView(view) {
   </div>
 </section>
 
-<!-- Script para garantir o carregamento no Anual -->
 <script>
    document.addEventListener('DOMContentLoaded', function() {
       const billingToggle = document.getElementById('billing-toggle');
@@ -1104,13 +1058,11 @@ function toggleView(view) {
       const monthlyLabel = document.getElementById('monthly-label');
       const annualLabel = document.getElementById('annual-label');
 
-      // Força o início no Anual
       billingToggle.checked = true;
 
       function updatePricing() {
          const isAnnual = billingToggle.checked;
          
-         // Atualiza as cores dos labels no topo
          if (isAnnual) {
             monthlyLabel.style.color = 'var(--tx2)';
             annualLabel.style.color = 'var(--tx1)';
@@ -1123,33 +1075,26 @@ function toggleView(view) {
             annualLabel.style.fontWeight = 'normal';
          }
 
-         // Atualiza os valores nos cards
          priceValues.forEach(el => {
             const monthlyPrice = el.getAttribute('data-monthly');
             const annualPrice = el.getAttribute('data-annual');
             el.textContent = isAnnual ? annualPrice : monthlyPrice;
          });
 
-         // Atualiza os textos abaixo dos valores
          billingCycleTexts.forEach(el => {
             el.textContent = isAnnual ? 'with annual agreement' : 'month-to-month';
          });
       }
 
-      // Roda a função no carregamento da página
       updatePricing();
-
-      // Escuta o clique para alternar entre Mensal e Anual
       billingToggle.addEventListener('change', updatePricing);
    });
 </script>
 
-<!-- TEAM SECTION -->
 <section id="team" class="py-5" style="background-color: var(--bg1); position: relative;">
    <div class="container">
       <div class="row align-items-center g-5">
          
-         <!-- Lado Esquerdo: Texto -->
          <div class="col-lg-6">
             <span class="slbl">Meet the Team</span>
             <h2 class="stitle mb-4">Our Founders</h2>
@@ -1164,11 +1109,9 @@ function toggleView(view) {
             </p>
          </div>
 
-         <!-- Lado Direito: Imagens -->
          <div class="col-lg-6">
             <div class="row justify-content-center justify-content-lg-end g-4">
                
-               <!-- Team 1: Ted -->
                <div class="col-6 col-md-5 text-center">
                   <div class="team-card">
                      <div class="img-wrapper position-relative overflow-hidden rounded-4 mb-3">
@@ -1182,7 +1125,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- Team 2: Tuneer -->
                <div class="col-6 col-md-5 text-center">
                   <div class="team-card">
                      <div class="img-wrapper position-relative overflow-hidden rounded-4 mb-3">
@@ -1203,9 +1145,6 @@ function toggleView(view) {
    </div>
 </section>
 
-<!-- =========================================
-     SEÇÃO DE FAQ ATUALIZADA E REORGANIZADA
-     ========================================= -->
 <section id="faq" class="sp" style="display: block !important; width: 100% !important; padding: 80px 0 !important; background: var(--bg);">
    <div class="container">
       <div class="text-center mb-5">
@@ -1216,7 +1155,6 @@ function toggleView(view) {
          <div class="col-lg-8">
             <div class="accordion acco" id="faqAcc">
                
-               <!-- 1. IS THIS FULLY AI? -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingOne">
                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1" aria-expanded="true" aria-controls="f1" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1230,7 +1168,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 2. IS GUTHRIE REPLACING MY ESTIMATORS? -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingTwo">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2" aria-expanded="false" aria-controls="f2" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1244,7 +1181,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 3. DO YOU SEND IT OR DO WE SEND IT? -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingThree">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3" aria-expanded="false" aria-controls="f3" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1258,7 +1194,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 4. PRICING & CONTRACT LENGTH -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingFour">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4" aria-expanded="false" aria-controls="f4" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1272,7 +1207,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 5. DATA OWNERSHIP -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingFive">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5" aria-expanded="false" aria-controls="f5" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1286,7 +1220,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 6. COMPETITORS & SECURITY -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingSix">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f6" aria-expanded="false" aria-controls="f6" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1300,7 +1233,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 7. GLASS FABRICATOR SPECIFIC -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingSeven">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f7" aria-expanded="false" aria-controls="f7" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1314,7 +1246,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 8. HOW DOES THE HYBRID MODEL WORK? -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingEight">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f8" aria-expanded="false" aria-controls="f8" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1328,7 +1259,6 @@ function toggleView(view) {
                   </div>
                </div>
 
-               <!-- 9. RFI WORKFLOWS & INTEGRATIONS -->
                <div class="accordion-item mb-3" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
                   <h2 class="accordion-header" id="headingNine">
                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f9" aria-expanded="false" aria-controls="f9" style="background: transparent; font-weight: 600; box-shadow: none;">
@@ -1348,67 +1278,6 @@ function toggleView(view) {
    </div>
 </section>
 
-<!-- =========================================
-     CONTACT SECTION (NOVA)
-     ========================================= -->
-<!-- <section id="contact" class="py-5" style="background-color: var(--bg1); border-top: 1px solid var(--bd);">
-    <div class="container py-4">
-        <div class="row g-5 align-items-center">
-            
-            <div class="col-lg-5">
-                <span class="slbl">Contact Us</span>
-                <h2 class="stitle mb-4">Let's talk about your next bid.</h2>
-                <p style="color: var(--tx1); font-size: 1.1rem; margin-bottom: 2rem;">
-                    Whether you have a question about features, pricing, or want to see how GuthrieAI can transform your bidding process, our team is ready to help.
-                </p>
-                
-                <div class="d-flex flex-column gap-4">
-                    <div class="d-flex align-items-center gap-3">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 48px; height: 48px; background: rgba(9,104,56,0.1); color: #096838; flex-shrink: 0;">
-                            <i class="fa-solid fa-calendar-check fs-5"></i>
-                        </div>
-                        <div>
-                            <div class="small text-uppercase fw-bold" style="color: var(--tx2);">Schedule</div>
-                            <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" target="_blank" style="color: #198754; font-weight: 600; text-decoration: none;">Book a demo directly &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="p-4 p-md-5" style="background: var(--bg3); border-radius: 20px; border: 1px solid #096838; box-shadow: 0 10px 30px rgba(9,104,56,0.1);">
-                    <h4 style="color: var(--tx1); font-weight: 700; margin-bottom: 1.5rem;">Send us a message</h4>
-                    
-                    <form id="contactForm" action="https://www.form-to-email.com/api/s/your-form-id" method="POST">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="contactName" class="form-label small fw-semibold" style="color: var(--tx1);">Full Name *</label>
-                                <input type="text" id="contactName" class="form-control" style="background: var(--bg1); border: 1px solid var(--bd2); color: var(--tx1); padding: 12px;" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="contactEmail" class="form-label small fw-semibold" style="color: var(--tx1);">Work Email *</label>
-                                <input type="email" id="contactEmail" class="form-control" style="background: var(--bg1); border: 1px solid var(--bd2); color: var(--tx1); padding: 12px;" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="contactCompany" class="form-label small fw-semibold" style="color: var(--tx1);">Company</label>
-                                <input type="text" id="contactCompany" class="form-control" style="background: var(--bg1); border: 1px solid var(--bd2); color: var(--tx1); padding: 12px;">
-                            </div>
-                            <div class="col-12">
-                                <label for="contactMessage" class="form-label small fw-semibold" style="color: var(--tx1);">Message *</label>
-                                <textarea id="contactMessage" class="form-control" rows="4" style="background: var(--bg1); border: 1px solid var(--bd2); color: var(--tx1); padding: 12px;" required></textarea>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="bgrd btn w-100 py-3 fw-bold" style="border-radius: 12px;">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section> -->
-
          <!-- FINAL CTA -->
          <section id="cta">
             <div class="aur aur-a" style="top:50%;left:50%;transform:translate(-50%,-50%)"></div>
@@ -1422,7 +1291,6 @@ function toggleView(view) {
                </div>
             </div>
          </section>
-         <!-- CTA FIXO MOBILE -->
          <div class="d-lg-none fixed-bottom p-3 bg-dark border-top border-secondary" style="z-index: 1050;">
             <a href="https://calendly.com/tbaumg-guthrieai/meeting-w-ted" target="_blank" class="btn btn-success w-100 py-3 fw-bold rounded-3 shadow">
                Book a Custom Demo
@@ -1444,24 +1312,20 @@ function toggleView(view) {
                      </div>
                   </div>
                   <div class="col-6 col-md-2 fcol">
-                     <!-- <h5 style="color:#096838;">Product</h5> -->
                      <span class="slbl" style="color: #096838; font-weight: 600; text-transform: uppercase; letter-spacing: .12em;">Product</span>
                      <a href="#features">ROI Analysis</a><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a>
                   </div>
                   <div class="col-6 col-md-2 fcol">
-                     <!-- <h5 style="color:#096838;">Company</h5> -->
                       <span class="slbl" style="color: #096838; font-weight: 600; text-transform: uppercase; letter-spacing: .12em;">Company</span>
                      <a href="#aboutus">About Us</a><a href="testimonials.html">Client Testimonials</a><a href="https://www.linkedin.com/company/guthrie-ai/jobs/" target="_blank">Careers</a>
                   </div>
                   <div class="col-6 col-md-2 fcol">
-                     <!-- <h5 style="color:#096838;">Company</h5> -->
                       <span class="slbl" style="color: #096838; font-weight: 600; text-transform: uppercase; letter-spacing: .12em;">Legal</span>
                         <a href="terms.html">Terms of Service</a>
                         <a href="privacy.html">Privacy Policy</a>
                         <a href="cookie.html">Cookie Policy</a>
                   </div>
                   <div class="col-6 col-md-2 fcol">
-                     <!-- <h5 style="color:#096838;">Proud Member of</h5> -->
                      <span class="slbl" style="color: #096838; font-weight: 600; text-transform: uppercase; letter-spacing: .12em;">Proud Member of</span>
                         <a href="https://www.glass.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/client-9.png" 
                            alt="National Glass Association" 
@@ -1513,24 +1377,17 @@ function toggleView(view) {
       <!-- /landing -->
 
       <!-- ======================== SCRIPTS ======================== -->
-      <!-- jQuery -->
       <script src="js/jquery-3.7.1.min.js"></script>
-      <!-- Bootstrap 5 -->
       <script src="js/bootstrap.bundle.min.js"></script>
-      <!-- AOS -->
       <script src="js/aos.js"></script>
-      <!-- Swiper -->
       <script src="js/chart.umd.min.js"></script>
-      <!-- CounterUp -->
       <script src="js/jquery.magnific-popup.min.js"></script>
-      <!-- Main js -->
       <script src="js/main.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-      <!-- Map Live -->
       <script src="./js/map-live.js"></script>
+
       <script>
       document.addEventListener("DOMContentLoaded", function() {
-         // Configuração exclusiva para as logos
          new Swiper('.clients-swiper', {
             loop: true,
             speed: 6000, 
@@ -1549,360 +1406,69 @@ function toggleView(view) {
       });
       </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.getElementById('btnFooterChat');
-    const chatSection = document.getElementById('sec-chat');
-
-    if (btn && chatSection) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // 1. Esconde todas as secções .db-section
-            document.querySelectorAll('.db-section').forEach(sec => {
-                sec.style.display = 'none';
-                sec.classList.remove('active');
-            });
-
-            // 2. Mostra a secção do Chat
-            chatSection.style.display = 'block';
-            chatSection.classList.add('active');
-
-            // 3. Rola até lá
-            chatSection.scrollIntoView({ behavior: 'smooth' });
-            
-            console.log("Chat ativado com sucesso!");
-        });
-    } else {
-        console.error("ERRO: O botão ou a secção 'sec-chat' não foram encontrados. Verifique os IDs.");
-    }
-});
-</script>
-
+      <!-- ▼▼▼ NOVO: reforço do contador via endpoint leve (fallback) ▼▼▼ -->
       <script>
-      document.addEventListener("DOMContentLoaded", function () {
-      const backToTopBtn = document.getElementById("backToTop");
+      (function () {
+        // Ajuste se mudar de host
+        const BRIDGE_BASE = 'https://guthrie-api-bridge-production.up.railway.app';
+        const COUNTER_URL = `${BRIDGE_BASE}/api/guthrie-projects/count`;
+        const REFRESH_MS = 60 * 1000;
 
-      // Monitora a rolagem da página
-      window.addEventListener("scroll", function () {
-         // Se rolar mais de 300px para baixo, mostra o botão, senão esconde
-         if (window.scrollY > 300) {
-            backToTopBtn.classList.add("show");
-         } else {
-            backToTopBtn.classList.remove("show");
-         }
-      });
+        function formatTotal(n) {
+          if (!Number.isFinite(n) || n <= 0) return '—';
+          return n >= 1000
+            ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k+'
+            : n + '+';
+        }
 
-      // Ação de clique para subir de forma suave (Smooth Scroll)
-      backToTopBtn.addEventListener("click", function () {
-         window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-         });
-      });
-      });
-      </script>
+        function setCounter(val, title) {
+          const el = document.getElementById('total-projects-counter');
+          if (!el) return;
+          el.textContent = val;
+          if (title) el.setAttribute('title', title);
+        }
 
-<script>
-  /* ===== Lógica precisa da Calculadora de ROI baseada em Planilha ===== */
-  const ROI_DEFAULTS = {
-    HOURS_PER_FTE_MONTH: 40 * 4,  // 160
-    TIME_SAVINGS_FACTOR: 0.5,
-    GROSS_MARGIN: 0.20,
-    WIN_RATE_UPLIFT: 0.05,        // Ajustado para 0.05 (5%) para refletir o ganho real e atingir os 10x de ROI
-    VBA_MONTHLY_COST: 4125
-  };
-
-  // Motor da calculadora. Retorna valores arredondados para cima (Math.ceil).
-  function runRoiMath(inp) {
-    const cfg = ROI_DEFAULTS;
-
-    // Campos obrigatórios com fallback caso venham vazios
-    const estimators     = Math.max(0, Number(inp.estimators) || 3);
-    const quotesPerMonth = Math.max(0, Number(inp.quotesPerMonth) || 30);
-    const avgQuoteValue  = Math.max(0, Number(inp.avgQuoteValue) || 137500);
-    const hoursPerQuote  = Math.max(1e-6, Number(inp.hoursPerQuote) || 12);
-
-    // Campos opcionais com valores padrão
-    const winRate = (inp.winRate !== "" && inp.winRate != null)
-      ? Math.min(1, Math.max(0, Number(inp.winRate) / 100))
-      : 0.25;
-    const vbas = (inp.vbas !== "" && inp.vbas != null) ? Math.max(0, Number(inp.vbas)) : 1;
-
-    // Baseline capacity
-    const totalEstimatorHrs = estimators * cfg.HOURS_PER_FTE_MONTH;
-    const quotesCompletedBaseline = Math.min(totalEstimatorHrs / hoursPerQuote, quotesPerMonth);
-
-    // Com GuthrieAI
-    const totalVbaHrs = vbas * cfg.HOURS_PER_FTE_MONTH;
-    const quotesHandledByVba = totalVbaHrs / hoursPerQuote;
-    const timeSavedPerEstimatorQuote = hoursPerQuote * cfg.TIME_SAVINGS_FACTOR;
-
-    const totalEstimatorHrsWithSavings = (estimators * cfg.HOURS_PER_FTE_MONTH) - (quotesHandledByVba * timeSavedPerEstimatorQuote);
-    const estimatorQuotesWithSavings   = totalEstimatorHrsWithSavings / hoursPerQuote;
-
-    const quotesCompletedWithGuthrie = Math.min(quotesHandledByVba + estimatorQuotesWithSavings, quotesPerMonth);
-
-    // Ganhos & Lucros
-    const winRateWithGuthrie = winRate + cfg.WIN_RATE_UPLIFT;
-    const quotesWonBaseline  = winRate * quotesCompletedBaseline;
-    const quotesWonGuthrie   = winRateWithGuthrie * quotesCompletedWithGuthrie;
-
-    const additionalQuotesWon    = quotesWonGuthrie - quotesWonBaseline;
-    const additionalRevenue      = (quotesWonGuthrie - quotesWonBaseline) * avgQuoteValue;
-    const additionalGrossProfit  = additionalRevenue * cfg.GROSS_MARGIN;
-    const additionalCost         = cfg.VBA_MONTHLY_COST * vbas;
-    const roiMultiple            = additionalCost === 0 ? 0 : (additionalGrossProfit / additionalCost);
-
-    return {
-      quotes: Math.ceil(additionalQuotesWon),
-      profit: Math.ceil(additionalGrossProfit),
-      cost:   Math.ceil(additionalCost),
-      roi:    Math.ceil(roiMultiple)
-    };
-  }
-
-  // Monitora o carregamento da página para gerenciar o formulário integrado
-  document.addEventListener('DOMContentLoaded', function() {
-    const roiForm = document.getElementById('roiForm');
-    
-    if (roiForm) {
-      roiForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Captura os valores atuais ou assume o padrão inserido se o usuário limpou o campo
-        const estimators = document.getElementById('estimators').value || "3";
-        const qpm        = document.getElementById('quotesPerMonth').value || "30";
-        const aqv        = document.getElementById('avgQuoteValue').value || "137500";
-        const hpq        = document.getElementById('hoursPerQuote').value || "12";
-        const winRate    = document.getElementById('winRate').value || "25";
-        const vbas       = document.getElementById('vbas').value || "1";
-
-        // Processa os dados usando as regras de negócio atualizadas
-        const results = runRoiMath({
-          estimators,
-          quotesPerMonth: qpm,
-          avgQuoteValue:  aqv,
-          hoursPerQuote:  hpq,
-          winRate:        winRate,
-          vbas:           vbas
+        // Escuta o map-live.js — quando ele termina, já temos o total exato
+        document.addEventListener('guthrieMapDataReady', (e) => {
+          if (e.detail && typeof e.detail.total === 'number') {
+            setCounter(formatTotal(e.detail.total), `Total projects: ${e.detail.total}`);
+          }
         });
 
-        // Atualiza a interface com formatação correta de moedas (Ex: 15,000)
-        document.getElementById('outQuotes').textContent = results.quotes.toString();
-        document.getElementById('outProfit').textContent = results.profit.toLocaleString('en-US');
-        document.getElementById('outCost').textContent   = results.cost.toLocaleString('en-US');
-        document.getElementById('outRoi').textContent    = results.roi + 'x';
-
-        // Guarda a URL atual para tracking/retorno caso necessário
-        try { sessionStorage.setItem('roiReturnUrl', window.location.href); } catch (err) {}
-
-        // Alterna para os resultados
-        showOutputs();
-      });
-    }
-  });
-
-// Chame esta função dentro do seu DOMContentLoaded ou logo após carregar o mapa
-document.addEventListener('DOMContentLoaded', () => {
-  initFomoTicker();
-});
-
-  /* ===== Alternância de Telas Integradas (Inline) ===== */
-  function showInputs() {
-    document.getElementById('roiInputsScreen').style.display = 'block';
-    document.getElementById('roiOutputsScreen').style.display = 'none';
-  }
-
-  function showOutputs() {
-    document.getElementById('roiInputsScreen').style.display = 'none';
-    document.getElementById('roiOutputsScreen').style.display = 'block';
-  }
-</script>
-
-<script>
-  (function() {
-    // Mensagens padrão enquanto a API carrega ou se ela falhar
-    const defaultFomoMessages = [
-      "🔥 <strong style='color:#198754'>High Demand:</strong> 14 new contractors started onboarding in the last 24 hours.",
-      "⚡ <strong style='color:#198754'>Trend:</strong> Project volume generated in Texas grew 32% this month.",
-      "⚠️ <strong style='color:#198754'>Attention:</strong> Automated onboarding for new construction firms closes batch soon.",
-      "🚀 <strong style='color:#198754'>Live:</strong> A major Philadelphia contractor just automated their estimations."
-    ];
-
-    let fomoInterval = null;
-
-    function initFomoTicker(messages) {
-      const fomoEl = document.getElementById('fomo-dynamic-text');
-      if (!fomoEl) return;
-
-      // Limpa timer anterior se existir
-      if (fomoInterval) clearInterval(fomoInterval);
-
-      // Embaralha as mensagens
-      const shuffledMessages = [...messages].sort(() => 0.5 - Math.random());
-      let index = 0;
-
-      // Define a primeira imediatamente
-      fomoEl.style.opacity = 1;
-      fomoEl.innerHTML = shuffledMessages[index];
-
-      // Alterna as mensagens
-      fomoInterval = setInterval(() => {
-        index = (index + 1) % shuffledMessages.length;
-        fomoEl.style.opacity = 0;
-        
-        setTimeout(() => {
-          fomoEl.innerHTML = shuffledMessages[index];
-          fomoEl.style.opacity = 1;
-        }, 300);
-      }, 6000);
-    }
-
-    // 1. Inicia com mensagens genéricas imediatamente ao carregar a página
-    document.addEventListener('DOMContentLoaded', () => {
-      initFomoTicker(defaultFomoMessages);
-    });
-
-    // 2. Escuta o evento do mapa-live.js quando os dados reais chegarem
-    document.addEventListener('guthrieMapDataReady', (e) => {
-      const { projectsData, total } = e.detail;
-      
-      if (!projectsData || projectsData.length === 0) return;
-
-      // Encontra o líder de projetos
-      const topLocation = projectsData.reduce((max, item) => {
-        return (item.count || 1) > (max.count || 1) ? item : max;
-      }, projectsData[0]);
-
-      // Escolhe um local aleatório
-      const randomLocation = projectsData[Math.floor(Math.random() * projectsData.length)];
-
-      // Conta locais únicos
-      const uniqueLocations = new Set(projectsData.map(p => p.location?.trim().toUpperCase())).size;
-
-      // Formata o número total
-      const formatTotal = total >= 1000 ? (total / 1000).toFixed(1) + 'k' : total;
-
-      // Cria as mensagens dinâmicas
-      const dynamicMessages = [
-        `🔥 <strong style='color:#198754'>High Demand:</strong> ${formatTotal}+ active projects currently being tracked nationwide.`,
-        `⚡ <strong style='color:#198754'>Trend:</strong> Project volume in ${topLocation.location} is leading with ${topLocation.count || 1} active bids.`,
-        `📍 <strong style='color:#198754'>Network:</strong> Connecting ${uniqueLocations} active construction hubs across the country.`,
-        `🚀 <strong style='color:#198754'>Live:</strong> A contractor in ${randomLocation.location} just generated a new estimate.`
-      ];
-
-      // Reinicia o ticker com as mensagens dinâmicas
-      initFomoTicker(dynamicMessages);
-    });
-  })();
-</script>
-
-<script>
-   document.addEventListener('DOMContentLoaded', function() {
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20
-      },
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
-});
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Guthrie AI",
-  "operatingSystem": "Web, Cloud",
-  "applicationCategory": "BusinessApplication",
-  "description": "AI-powered preconstruction support platform combining AI Apprentice (AI) and human Bid Coordinators to automate RFPs, manage RFIs, and streamline commercial construction estimating.",
-  "url": "https://www.guthrieai.com",
-  "author": {
-    "@type": "Organization",
-    "name": "Guthrie AI"
-  },
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "price": "Contact for pricing",
-    "availability": "https://schema.org/OnlineOnly"
-  },
-  "audience": {
-    "@type": "Audience",
-    "audienceType": "Commercial Construction Contractors, Subcontractors, Estimators, Preconstruction Managers"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "United States"
-  }
-}
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const kactusLogo = document.getElementById('kactus-logo-img');
-    if (!kactusLogo) {
-        console.warn('[kactus] Elemento #kactus-logo-img não encontrado.');
-        return;
-    }
-
-    // Verifica .lm em QUALQUER um dos elementos possíveis
-    function isLightMode() {
-        const htmlRoot = document.getElementById('htmlRoot');
-        return (
-            document.documentElement.classList.contains('lm') ||
-            document.body.classList.contains('lm') ||
-            (htmlRoot && htmlRoot.classList.contains('lm'))
-        );
-    }
-
-    function updateKactusLogo() {
-        const light = isLightMode();
-        const targetSrc = light ? 'img/kactusstudio2.png' : 'img/kactusstudio1.png';
-        if (kactusLogo.getAttribute('src') !== targetSrc) {
-            kactusLogo.src = targetSrc;
-            console.log('[kactus] modo=' + (light ? 'LIGHT' : 'DARK') + ' → ' + targetSrc);
+        // Fallback: consulta o endpoint leve (caso o mapa falhe por algum motivo)
+        async function refreshCounter() {
+          try {
+            const res = await fetch(
+              `${COUNTER_URL}${COUNTER_URL.includes('?') ? '&' : '?'}_ts=${Date.now()}`,
+              { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } }
+            );
+            if (!res.ok) return;
+            const data = await res.json();
+            if (typeof data.total === 'number') {
+              setCounter(formatTotal(data.total), `Total projects: ${data.total}`);
+            }
+          } catch (err) {
+            console.warn('[counter] fallback fetch failed:', err.message);
+          }
         }
-    }
 
-    // 1. Roda na carga inicial
-    updateKactusLogo();
+        document.addEventListener('DOMContentLoaded', () => {
+          // Só roda fallback se o mapa não entregou em 5s (ex: bloqueio de CORS, JS quebrado)
+          setTimeout(() => {
+            const el = document.getElementById('total-projects-counter');
+            if (el && (el.textContent === '—' || !el.textContent.trim())) {
+              refreshCounter();
+            }
+          }, 5000);
 
-    // 2. Observa mudanças de classe em html, body e #htmlRoot
-    const observer = new MutationObserver(updateKactusLogo);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    const htmlRoot = document.getElementById('htmlRoot');
-    if (htmlRoot) {
-        observer.observe(htmlRoot, { attributes: true, attributeFilter: ['class'] });
-    }
+          // Reforço: a cada 60s
+          setInterval(refreshCounter, REFRESH_MS);
 
-    // 3. Fallback extra: também atualiza após cliques nos botões de tema
-    document.querySelectorAll('#thbtn, .theme-mobile-btn').forEach(btn => {
-        btn.addEventListener('click', () => setTimeout(updateKactusLogo, 60));
-    });
-});
-</script>
-   </body>
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) refreshCounter();
+          });
+        });
+      })();
+      </script>
+    </body>
 </html>
