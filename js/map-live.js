@@ -65,6 +65,14 @@ const US_EXACT_MAP_COORDS = {
 };
 
 // ---------------------------------------------------------------------------
+// Configuração do bridge (ajuste se mudar de host)
+// ---------------------------------------------------------------------------
+const BRIDGE_BASE = 'https://guthrie-api-bridge-production.up.railway.app';
+
+// Atualização automática do mapa/contador (60s)
+const MAP_REFRESH_MS = 60 * 1000;
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -122,7 +130,13 @@ async function fetchWithTimeout(url, ms) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
-    const r = await fetch(url, { signal: ctrl.signal });
+    // cache-busting para evitar resposta velha do navegador/CDN
+    const busted = `${url}${url.includes('?') ? '&' : '?'}_ts=${Date.now()}`;
+    const r = await fetch(busted, {
+      signal: ctrl.signal,
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-cache' }
+    });
     clearTimeout(t);
     return r;
   } catch (e) {
@@ -131,20 +145,35 @@ async function fetchWithTimeout(url, ms) {
   }
 }
 
+function formatTotal(n) {
+  if (!Number.isFinite(n) || n <= 0) return '0+';
+  return n >= 1000
+    ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k+'
+    : n + '+';
+}
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
+let refreshTimer = null;
+let isFetching = false;
+
 async function renderPreciseMap() {
   const container = document.querySelector('.map-wrapper');
   if (!container) return;
+  if (isFetching) return; // evita chamadas paralelas
+  isFetching = true;
 
-  setMapState(container, 'loading', 'Loading live project data…');
+  // Só mostra "Loading..." na primeira carga (evita flicker a cada 60s)
+  if (!container.classList.contains('map-rendered')) {
+    setMapState(container, 'loading', 'Loading live project data…');
+  }
 
   let projectsData = [];
   try {
     const response = await fetchWithTimeout(
-      'https://guthrie-api-bridge-production.up.railway.app/api/guthrie-projects',
+      `${BRIDGE_BASE}/api/guthrie-projects`,
       15000
     );
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -154,25 +183,30 @@ async function renderPreciseMap() {
     projectsData = Array.isArray(raw) ? raw : (raw?.data || []);
   } catch (err) {
     console.error('[map] Failed to load project data:', err);
-    setMapState(container, 'error', 'Live data temporarily unavailable.');
-    const counter = document.getElementById('total-projects-counter');
-    if (counter) counter.textContent = '—';
-
-    // Avisa quem escuta (FOMO ticker no index.html pode reagir)
+    // Se já tem mapa renderizado, mantém o anterior (não quebra a UI)
+    if (!container.classList.contains('map-rendered')) {
+      setMapState(container, 'error', 'Live data temporarily unavailable.');
+      const counter = document.getElementById('total-projects-counter');
+      if (counter) counter.textContent = '—';
+    }
     document.dispatchEvent(
       new CustomEvent('guthrieMapError', { detail: { error: err.message } })
     );
+    isFetching = false;
     return;
   }
 
   setMapState(container, null);
 
   if (!Array.isArray(projectsData) || projectsData.length === 0) {
-    setMapState(container, 'error', 'No project data available yet.');
+    if (!container.classList.contains('map-rendered')) {
+      setMapState(container, 'error', 'No project data available yet.');
+    }
+    isFetching = false;
     return;
   }
 
-  // Limpa renderizações anteriores
+  // Limpa renderizações anteriores (mapa + svg + nós)
   container
     .querySelectorAll('.night-city-node, .night-svg-layer')
     .forEach(el => el.remove());
@@ -225,10 +259,8 @@ async function renderPreciseMap() {
   // -------------------------------------------------------------------------
   const counter = document.getElementById('total-projects-counter');
   if (counter) {
-    counter.textContent =
-      grandTotalProjects >= 1000
-        ? (grandTotalProjects / 1000).toFixed(1) + 'k+'
-        : grandTotalProjects + '+';
+    counter.textContent = formatTotal(grandTotalProjects);
+    counter.setAttribute('title', `Total projects: ${grandTotalProjects}`);
   }
 
   // -------------------------------------------------------------------------
@@ -335,6 +367,26 @@ async function renderPreciseMap() {
       detail: { projectsData, total: grandTotalProjects }
     })
   );
+
+  isFetching = false;
 }
 
-document.addEventListener('DOMContentLoaded', renderPreciseMap);
+// ---------------------------------------------------------------------------
+// Bootstrap: primeira carga + auto-refresh
+// ---------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  renderPreciseMap();
+
+  // Auto-refresh a cada 60s (mapa + contador)
+  refreshTimer = setInterval(renderPreciseMap, MAP_REFRESH_MS);
+
+  // Re-busca quando o usuário volta para a aba (economiza requests)
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) renderPreciseMap();
+  });
+
+  // Para o timer se a página for descarregada (boa prática)
+  window.addEventListener('beforeunload', () => {
+    if (refreshTimer) clearInterval(refreshTimer);
+  });
+});
