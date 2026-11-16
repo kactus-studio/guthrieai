@@ -1,5 +1,5 @@
 /**
- * Coordenadas geográficas de alta precisão (matriz mantida do original)
+ * Coordenadas geográficas
  */
 const US_EXACT_MAP_COORDS = {
   "SEATTLE": { top: 18.0, left: 16.0 }, "PORTLAND": { top: 24.0, left: 15.0 },
@@ -64,64 +64,33 @@ const US_EXACT_MAP_COORDS = {
   "WY": { top: 37.0, left: 42.5 }
 };
 
-// ---------------------------------------------------------------------------
-// Configuração do bridge (ajuste se mudar de host)
-// ---------------------------------------------------------------------------
 const BRIDGE_BASE = 'https://guthrie-api-bridge-production.up.railway.app';
-
-// Atualização automática do mapa/contador (60s)
 const MAP_REFRESH_MS = 60 * 1000;
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
 function escapeHtml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function getPreciseCoordinates(locationString) {
   if (!locationString) return null;
   const clean = locationString.trim().toUpperCase();
-
-  // Match exato
   if (US_EXACT_MAP_COORDS[clean]) return US_EXACT_MAP_COORDS[clean];
-
-  // Tenta extrair a sigla do estado no final ("City, ST")
   const parts = clean.split(/[\s,]+/).filter(Boolean);
   const lastPart = parts[parts.length - 1];
   if (US_EXACT_MAP_COORDS[lastPart]) return US_EXACT_MAP_COORDS[lastPart];
-
-  // Última tentativa: substring
   for (const [key, coords] of Object.entries(US_EXACT_MAP_COORDS)) {
     if (clean.includes(key)) return coords;
   }
-
-  // Não posiciona cidades desconhecidas em local aleatório
-  console.warn(`[map] City not mapped: "${locationString}" (skipped)`);
   return null;
 }
 
 function setMapState(container, state, message) {
-  // Remove status anterior
   container.querySelectorAll('.map-status').forEach(el => el.remove());
   if (!state) return;
-
-  const styles =
-    state === 'error'
-      ? 'color:#c44;text-align:center;padding:20px;font-size:13px'
-      : 'color:var(--tx1);text-align:center;font-size:13px;opacity:.7';
-
+  const styles = state === 'error' ? 'color:#c44;text-align:center;padding:20px;font-size:13px' : 'color:var(--tx1);text-align:center;font-size:13px;opacity:.7';
   const el = document.createElement('div');
   el.className = 'map-status';
-  el.style.cssText =
-    `position:absolute;inset:0;display:flex;align-items:center;` +
-    `justify-content:center;${styles}`;
+  el.style.cssText = `position:absolute;inset:0;display:flex;align-items:center;justify-content:center;${styles}`;
   el.textContent = message;
   container.appendChild(el);
 }
@@ -130,13 +99,8 @@ async function fetchWithTimeout(url, ms) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
-    // cache-busting para evitar resposta velha do navegador/CDN
     const busted = `${url}${url.includes('?') ? '&' : '?'}_ts=${Date.now()}`;
-    const r = await fetch(busted, {
-      signal: ctrl.signal,
-      cache: 'no-store',
-      headers: { 'Cache-Control': 'no-cache' }
-    });
+    const r = await fetch(busted, { signal: ctrl.signal, cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
     clearTimeout(t);
     return r;
   } catch (e) {
@@ -147,76 +111,48 @@ async function fetchWithTimeout(url, ms) {
 
 function formatTotal(n) {
   if (!Number.isFinite(n) || n <= 0) return '0+';
-  return n >= 1000
-    ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k+'
-    : n + '+';
+  return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k+' : n + '+';
 }
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
-
-let refreshTimer = null;
-let isFetching = false;
+// Variável global para controlar o FOMO Ticker
+let fomoInterval = null;
 
 async function renderPreciseMap() {
   const container = document.querySelector('.map-wrapper');
   if (!container) return;
-  if (isFetching) return; // evita chamadas paralelas
-  isFetching = true;
 
-  // Só mostra "Loading..." na primeira carga (evita flicker a cada 60s)
   if (!container.classList.contains('map-rendered')) {
     setMapState(container, 'loading', 'Loading live project data…');
   }
 
   let projectsData = [];
   try {
-    const response = await fetchWithTimeout(
-      `${BRIDGE_BASE}/api/guthrie-projects`,
-      15000
-    );
+    const response = await fetchWithTimeout(`${BRIDGE_BASE}/api/guthrie-projects`, 15000);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
     const raw = await response.json();
-    // Aceita array direto OU envelope { data: [...] }
     projectsData = Array.isArray(raw) ? raw : (raw?.data || []);
   } catch (err) {
     console.error('[map] Failed to load project data:', err);
-    // Se já tem mapa renderizado, mantém o anterior (não quebra a UI)
     if (!container.classList.contains('map-rendered')) {
       setMapState(container, 'error', 'Live data temporarily unavailable.');
       const counter = document.getElementById('total-projects-counter');
       if (counter) counter.textContent = '—';
     }
-    document.dispatchEvent(
-      new CustomEvent('guthrieMapError', { detail: { error: err.message } })
-    );
-    isFetching = false;
     return;
   }
 
   setMapState(container, null);
 
   if (!Array.isArray(projectsData) || projectsData.length === 0) {
-    if (!container.classList.contains('map-rendered')) {
-      setMapState(container, 'error', 'No project data available yet.');
-    }
-    isFetching = false;
+    if (!container.classList.contains('map-rendered')) setMapState(container, 'error', 'No project data available yet.');
     return;
   }
 
-  // Limpa renderizações anteriores (mapa + svg + nós)
-  container
-    .querySelectorAll('.night-city-node, .night-svg-layer')
-    .forEach(el => el.remove());
+  container.querySelectorAll('.night-city-node, .night-svg-layer').forEach(el => el.remove());
 
-  // -------------------------------------------------------------------------
-  // Constantes de layout
-  // -------------------------------------------------------------------------
-  const CLUSTER_PRECISION   = 3.5;  // >8 = mais granular | <3 = mais agrupado
-  const LOCAL_CONNECTION_MAX = 24;  // distância p/ conectar dois pontos
-  const CLOSEST_NEIGHBOR_MAX = 50;  // limite p/ forçar "vizinho mais próximo"
+  const CLUSTER_PRECISION = 3.5;
+  const LOCAL_CONNECTION_MAX = 24;
+  const CLOSEST_NEIGHBOR_MAX = 50;
 
   let grandTotalProjects = 0;
   const clustersMap = {};
@@ -229,79 +165,68 @@ async function renderPreciseMap() {
     const coords = getPreciseCoordinates(rawLocation);
     if (!coords) return;
 
-    const clusterTop =
-      Math.round(coords.top * CLUSTER_PRECISION) / CLUSTER_PRECISION;
-    const clusterLeft =
-      Math.round(coords.left * CLUSTER_PRECISION) / CLUSTER_PRECISION;
+    const clusterTop = Math.round(coords.top * CLUSTER_PRECISION) / CLUSTER_PRECISION;
+    const clusterLeft = Math.round(coords.left * CLUSTER_PRECISION) / CLUSTER_PRECISION;
     const clusterKey = `${clusterTop.toFixed(2)}-${clusterLeft.toFixed(2)}`;
 
     if (!clustersMap[clusterKey]) {
-      clustersMap[clusterKey] = {
-        top: `${clusterTop}%`,
-        left: `${clusterLeft}%`,
-        topNum: clusterTop,
-        leftNum: clusterLeft,
-        subCities: []
-      };
+      clustersMap[clusterKey] = { top: `${clusterTop}%`, left: `${clusterLeft}%`, topNum: clusterTop, leftNum: clusterLeft, subCities: [] };
     }
 
-    const existing = clustersMap[clusterKey].subCities.find(
-      c => c.name.toUpperCase() === rawLocation.toUpperCase()
-    );
+    const existing = clustersMap[clusterKey].subCities.find(c => c.name.toUpperCase() === rawLocation.toUpperCase());
     if (existing) existing.count += count;
     else clustersMap[clusterKey].subCities.push({ name: rawLocation, count });
   });
 
   const clustersToRender = Object.values(clustersMap);
 
-  // -------------------------------------------------------------------------
-  // Contador principal
-  // -------------------------------------------------------------------------
+  // Atualiza o contador principal
   const counter = document.getElementById('total-projects-counter');
   if (counter) {
     counter.textContent = formatTotal(grandTotalProjects);
     counter.setAttribute('title', `Total projects: ${grandTotalProjects}`);
   }
 
-  // -------------------------------------------------------------------------
+  // =======================================================================
+  // NOVO: ATUALIZA O FOMO TICKER (Loading live infos)
+  // =======================================================================
+  const fomoText = document.getElementById('fomo-dynamic-text');
+  if (fomoText && projectsData.length > 0) {
+    if (fomoInterval) clearInterval(fomoInterval);
+    let fomoIdx = 0;
+    
+    // Função que troca a mensagem
+    const updateFomoText = () => {
+      const proj = projectsData[fomoIdx % projectsData.length];
+      fomoText.innerHTML = `Live tracking: <strong>${escapeHtml(proj.location)}</strong> — ${proj.count} active project(s) tracked in this area.`;
+      fomoIdx++;
+    };
+
+    updateFomoText(); // Executa a primeira vez
+    fomoInterval = setInterval(updateFomoText, 4000); // Muda a cada 4 segundos
+  }
+
   // Camada SVG com linhas animadas
-  // -------------------------------------------------------------------------
   const svgNS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(svgNS, 'svg');
   svg.setAttribute('class', 'night-svg-layer');
   svg.setAttribute('viewBox', '0 0 100 100');
   svg.setAttribute('preserveAspectRatio', 'none');
-  svg.style.cssText =
-    'position:absolute;top:0;left:0;width:100%;height:100%;' +
-    'pointer-events:none;z-index:1;overflow:visible;';
+  svg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible;';
 
   const connections = new Set();
 
   clustersToRender.forEach((c1, i) => {
     let closestIdx = -1;
     let minDst = Infinity;
-
     clustersToRender.forEach((c2, j) => {
       if (i === j) return;
       const d = Math.hypot(c2.leftNum - c1.leftNum, c2.topNum - c1.topNum);
-
-      // Conecta quem está perto
-      if (d < LOCAL_CONNECTION_MAX) {
-        connections.add(i < j ? `${i}-${j}` : `${j}-${i}`);
-      }
-
-      // Guarda o mais próximo (para não deixar pontos isolados)
-      if (d < minDst) {
-        minDst = d;
-        closestIdx = j;
-      }
+      if (d < LOCAL_CONNECTION_MAX) connections.add(i < j ? `${i}-${j}` : `${j}-${i}`);
+      if (d < minDst) { minDst = d; closestIdx = j; }
     });
-
-    // Só conecta ao mais próximo se ele não estiver absurdamente longe
     if (closestIdx !== -1 && minDst < CLOSEST_NEIGHBOR_MAX) {
-      connections.add(
-        i < closestIdx ? `${i}-${closestIdx}` : `${closestIdx}-${i}`
-      );
+      connections.add(i < closestIdx ? `${i}-${closestIdx}` : `${closestIdx}-${i}`);
     }
   });
 
@@ -312,16 +237,13 @@ async function renderPreciseMap() {
 
     const makeLine = (className) => {
       const line = document.createElementNS(svgNS, 'line');
-      line.setAttribute('x1', c1.leftNum);
-      line.setAttribute('y1', c1.topNum);
-      line.setAttribute('x2', c2.leftNum);
-      line.setAttribute('y2', c2.topNum);
+      line.setAttribute('x1', c1.leftNum); line.setAttribute('y1', c1.topNum);
+      line.setAttribute('x2', c2.leftNum); line.setAttribute('y2', c2.topNum);
       line.setAttribute('class', className);
       return line;
     };
 
     svg.appendChild(makeLine('tracer-base-line'));
-
     const tracer = makeLine('tracer-bullet-beam');
     tracer.style.animationDuration = `${(6 + Math.random() * 12).toFixed(2)}s`;
     tracer.style.animationDelay = `${(Math.random() * 8).toFixed(2)}s`;
@@ -330,19 +252,13 @@ async function renderPreciseMap() {
 
   container.appendChild(svg);
 
-  // -------------------------------------------------------------------------
-  // Nós HTML com hover card
-  // -------------------------------------------------------------------------
+  // Nós HTML
   clustersToRender.forEach(cluster => {
-    const subCitiesHTML = cluster.subCities
-      .map(
-        sc => `
+    const subCitiesHTML = cluster.subCities.map(sc => `
         <div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:2px;align-items:center;">
           <span style="color:#cbd5e1;">${escapeHtml(sc.name)}</span>
           <strong style="color:#4ade80;">${sc.count} proj</strong>
-        </div>`
-      )
-      .join('');
+        </div>`).join('');
 
     const nodeHTML = `
       <div class="night-city-node" style="top:${cluster.top};left:${cluster.left};">
@@ -360,33 +276,12 @@ async function renderPreciseMap() {
   });
 
   container.classList.add('map-rendered');
-
-  // Avisa o index.html que os dados estão prontos (FOMO ticker)
-  document.dispatchEvent(
-    new CustomEvent('guthrieMapDataReady', {
-      detail: { projectsData, total: grandTotalProjects }
-    })
-  );
-
-  isFetching = false;
 }
 
-// ---------------------------------------------------------------------------
-// Bootstrap: primeira carga + auto-refresh
-// ---------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   renderPreciseMap();
-
-  // Auto-refresh a cada 60s (mapa + contador)
-  refreshTimer = setInterval(renderPreciseMap, MAP_REFRESH_MS);
-
-  // Re-busca quando o usuário volta para a aba (economiza requests)
+  setInterval(renderPreciseMap, MAP_REFRESH_MS);
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) renderPreciseMap();
-  });
-
-  // Para o timer se a página for descarregada (boa prática)
-  window.addEventListener('beforeunload', () => {
-    if (refreshTimer) clearInterval(refreshTimer);
   });
 });
